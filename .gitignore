@@ -228,3 +228,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+APIGenerator/APIGenerator/APIGenerator.vcxproj.filters
+APIGenerator/APIGenerator/SimplygonSDK_wrap.cxx
+#Example output folder
+Examples/Output
+Examples/SimplygonSDK.py
+Examples/_SimplygonSDK.pyd
