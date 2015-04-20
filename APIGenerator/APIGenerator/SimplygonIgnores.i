@@ -221,3 +221,41 @@
 // Additional cast operators that needs to be ignored
 %ignore *::operator const value_type*;
 %ignore *::operator const rchar*;
+
+// Ignore deprecated stuff in the api header (is it possible to detect the SGDEPRECATED tag?)
+// and autogenerate this?
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_AMBIENT;
+%ignore SimplygonSDK::SG_BONES_PER_VERTEX;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_DIFFUSE;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_SPECULAR;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_OPACITY;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_EMISSIVE;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_NORMALS;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_GROUPIDS;
+%ignore SimplygonSDK::SG_MATERIAL_TEXTURE_DISPLACEMENT;
+%ignore SimplygonSDK::IGeometryData::RemoveBoneIds();
+%ignore SimplygonSDK::IGeometryData::GetTriangleVertices();
+%ignore SimplygonSDK::IGeometryData::GetSpecularColors();
+%ignore SimplygonSDK::IGeometryData::CopyTriangleVertex( IGeometryData *source , rid dest_id , rid src_id );
+%ignore SimplygonSDK::IGeometryData::RemoveUserTriangleVertexField(const char * );
+%ignore SimplygonSDK::IGeometryData::CopyCombineTriangleVertices( IGeometryData *source , rid dest_id , rid src_id_1 , rid src_id_2 , real alpha );
+%ignore SimplygonSDK::IGeometryData::AddUserTriangleVertexField( IValueArray *field );
+%ignore SimplygonSDK::IGeometryData::CopyCombine3TriangleVertices( IGeometryData *source , rid dest_id , rid src_id_1 , rid src_id_2 , rid src_id_3 , real alpha_1 , real alpha_2 );
+%ignore SimplygonSDK::IGeometryData::GetUserTriangleVertexField(const char * name );
+%ignore SimplygonSDK::IGeometryData::AddBitangents( rid level );
+%ignore SimplygonSDK::IGeometryData::AddBoneIds( unsigned int level );
+%ignore SimplygonSDK::IGeometryData::AddBaseTypeUserTriangleVertexField( rid base_type , const char * name , unsigned int tuple_size );
+%ignore SimplygonSDK::IGeometryData::AddDiffuseColors();
+%ignore SimplygonSDK::IGeometryData::RemoveDiffuseColors();
+%ignore SimplygonSDK::IGeometryData::GetDiffuseColors();
+%ignore SimplygonSDK::IGeometryData::AddSpecularColors();
+%ignore SimplygonSDK::IGeometryData::RemoveSpecularColors();
+%ignore SimplygonSDK::IGeometryData::RemoveBitangents( rid level );
+%ignore SimplygonSDK::IPackedGeometryData::RemoveSpecularColors();
+%ignore SimplygonSDK::IPackedGeometryData::AddDiffuseColors();
+%ignore SimplygonSDK::IPackedGeometryData::GetSpecularColors();
+%ignore SimplygonSDK::IPackedGeometryData::RemoveDiffuseColors();
+%ignore SimplygonSDK::IPackedGeometryData::RemoveBitangents( rid level );
+%ignore SimplygonSDK::IPackedGeometryData::AddSpecularColors();
+%ignore SimplygonSDK::IPackedGeometryData::AddBitangents( rid level );
+%ignore SimplygonSDK::IPackedGeometryData::GetDiffuseColors();
