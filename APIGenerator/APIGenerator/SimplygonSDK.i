@@ -32,6 +32,7 @@ namespace SimplygonSDK {
 	extern int RunLicenseWizard( LPCTSTR batch_file );
 
 	extern ISimplygonSDK *GetSDK();
+#if defined(SWIGPYTHON)
 
 	class error_handler : public SimplygonSDK::rerrorhandler
 	{
@@ -60,6 +61,38 @@ namespace SimplygonSDK {
 		GetSDK()->SetErrorHandler(&eh);
 	}
 }
+#endif // defined(SWIGPYTHON)
+#if defined(SWIGCSHARP)
+
+	/*class error_handler : public SimplygonSDK::rerrorhandler
+	{
+	public:
+		virtual void HandleError(
+			IObject *object,
+			const char *interfacename,
+			const char *methodname,
+			rid errortype,
+			const char *errortext
+			)
+		{
+			char tmp[1024];
+
+			sprintf_s(tmp, 1024, "A SimplygonSDK error occured!\n");
+			sprintf_s(tmp, 1024, "%s\tInterface: %s (%p)\n", tmp, interfacename, object);
+			sprintf_s(tmp, 1024, "%s\tMethod: %s\n", tmp, methodname);
+			sprintf_s(tmp, 1024, "%s\tError Type: %d\n", tmp, errortype);
+			sprintf_s(tmp, 1024, "%s\tError Description: %s\n", tmp, errortext);
+			PyErr_SetString(PyExc_ValueError,tmp);
+		}
+	} eh;*/
+
+	extern void InitErrorhandling()
+	{
+		//GetSDK()->SetErrorHandler(&eh);
+	}
+}
+#endif // defined(SWIGCSHARP)
+
 %}
 
 %include "SimplygonTypemaps.i"

@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimplygonSDKCLR</RootNamespace>
+    <AssemblyName>SimplygonSDKCLR</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="swig\AtlasFillMode.cs" />
+    <Compile Include="swig\BaseTypes.cs" />
+    <Compile Include="swig\BoneRemovalProcessing.cs" />
+    <Compile Include="swig\DataCreationPreferences.cs" />
+    <Compile Include="swig\ErrorCodes.cs" />
+    <Compile Include="swig\EventCodes.cs" />
+    <Compile Include="swig\FeatureFlags.cs" />
+    <Compile Include="swig\GeometryValidationCodes.cs" />
+    <Compile Include="swig\IData.cs" />
+    <Compile Include="swig\ImageFileType.cs" />
+    <Compile Include="swig\IObject.cs" />
+    <Compile Include="swig\ISimplygonSDK.cs" />
+    <Compile Include="swig\ReductionHeuristics.cs" />
+    <Compile Include="swig\RemeshingSurfaceTransferMode.cs" />
+    <Compile Include="swig\rerrorhandler.cs" />
+    <Compile Include="swig\robserver.cs" />
+    <Compile Include="swig\rstring.cs" />
+    <Compile Include="swig\SimplygonSDK.cs" />
+    <Compile Include="swig\SimplygonSDKPINVOKE.cs" />
+    <Compile Include="swig\spArray.cs" />
+    <Compile Include="swig\spBinaryExporter.cs" />
+    <Compile Include="swig\spBinaryImporter.cs" />
+    <Compile Include="swig\spBoneSettings.cs" />
+    <Compile Include="swig\spBoolArray.cs" />
+    <Compile Include="swig\spBoolData.cs" />
+    <Compile Include="swig\spCamera.cs" />
+    <Compile Include="swig\spCameraPath.cs" />
+    <Compile Include="swig\spCharArray.cs" />
+    <Compile Include="swig\spCharData.cs" />
+    <Compile Include="swig\spChartAggregator.cs" />
+    <Compile Include="swig\spChunkedImageData.cs" />
+    <Compile Include="swig\spColorCaster.cs" />
+    <Compile Include="swig\spDirectXRenderer.cs" />
+    <Compile Include="swig\spDisplacementCaster.cs" />
+    <Compile Include="swig\spDoubleArray.cs" />
+    <Compile Include="swig\spDoubleData.cs" />
+    <Compile Include="swig\spFieldData.cs" />
+    <Compile Include="swig\spFloatArray.cs" />
+    <Compile Include="swig\spFloatData.cs" />
+    <Compile Include="swig\spGeometryAnalyzer.cs" />
+    <Compile Include="swig\spGeometryData.cs" />
+    <Compile Include="swig\spGeometryDataCollection.cs" />
+    <Compile Include="swig\spGeometryGroup.cs" />
+    <Compile Include="swig\spGeometryTangentCalculator.cs" />
+    <Compile Include="swig\spGeometryValidator.cs" />
+    <Compile Include="swig\spGraphicsExporter.cs" />
+    <Compile Include="swig\spGraphicsImporter.cs" />
+    <Compile Include="swig\spImageData.cs" />
+    <Compile Include="swig\spImageDataExporter.cs" />
+    <Compile Include="swig\spImageDataImporter.cs" />
+    <Compile Include="swig\spImpostorProcessor.cs" />
+    <Compile Include="swig\spImpostorSettings.cs" />
+    <Compile Include="swig\spIntArray.cs" />
+    <Compile Include="swig\spIntData.cs" />
+    <Compile Include="swig\spLongArray.cs" />
+    <Compile Include="swig\spLongData.cs" />
+    <Compile Include="swig\spMappingImage.cs" />
+    <Compile Include="swig\spMappingImageMeshData.cs" />
+    <Compile Include="swig\spMappingImageSettings.cs" />
+    <Compile Include="swig\spMaterial.cs" />
+    <Compile Include="swig\spMaterialCaster.cs" />
+    <Compile Include="swig\spMaterialTable.cs" />
+    <Compile Include="swig\spMatrix4x4.cs" />
+    <Compile Include="swig\spNormalAnalyzer.cs" />
+    <Compile Include="swig\spNormalCalculationSettings.cs" />
+    <Compile Include="swig\spNormalCaster.cs" />
+    <Compile Include="swig\spNormalRepairer.cs" />
+    <Compile Include="swig\spObjectCollection.cs" />
+    <Compile Include="swig\spOpacityCaster.cs" />
+    <Compile Include="swig\spPackedGeometryData.cs" />
+    <Compile Include="swig\spParameterizer.cs" />
+    <Compile Include="swig\spProcessingObject.cs" />
+    <Compile Include="swig\spRcharArray.cs" />
+    <Compile Include="swig\spRcharData.cs" />
+    <Compile Include="swig\spRealArray.cs" />
+    <Compile Include="swig\spRealData.cs" />
+    <Compile Include="swig\spReductionProcessor.cs" />
+    <Compile Include="swig\spReductionSettings.cs" />
+    <Compile Include="swig\spRemeshingProcessor.cs" />
+    <Compile Include="swig\spRemeshingSettings.cs" />
+    <Compile Include="swig\spRepairSettings.cs" />
+    <Compile Include="swig\spRhandleArray.cs" />
+    <Compile Include="swig\spRhandleData.cs" />
+    <Compile Include="swig\spRidArray.cs" />
+    <Compile Include="swig\spRidData.cs" />
+    <Compile Include="swig\spScene.cs" />
+    <Compile Include="swig\spSceneAggregator.cs" />
+    <Compile Include="swig\spSceneAggregatorSettings.cs" />
+    <Compile Include="swig\spSceneBone.cs" />
+    <Compile Include="swig\spSceneBoneTable.cs" />
+    <Compile Include="swig\spSceneLodGroup.cs" />
+    <Compile Include="swig\spSceneMesh.cs" />
+    <Compile Include="swig\spSceneNode.cs" />
+    <Compile Include="swig\spSceneNodeCollection.cs" />
+    <Compile Include="swig\spSettingsObject.cs" />
+    <Compile Include="swig\spShaderData.cs" />
+    <Compile Include="swig\spShadingAddNode.cs" />
+    <Compile Include="swig\spShadingClampNode.cs" />
+    <Compile Include="swig\spShadingColorNode.cs" />
+    <Compile Include="swig\spShadingCustomNode.cs" />
+    <Compile Include="swig\spShadingDivideNode.cs" />
+    <Compile Include="swig\spShadingFilterNode.cs" />
+    <Compile Include="swig\spShadingInterpolateNode.cs" />
+    <Compile Include="swig\spShadingMaxNode.cs" />
+    <Compile Include="swig\spShadingMinNode.cs" />
+    <Compile Include="swig\spShadingMultiplyNode.cs" />
+    <Compile Include="swig\spShadingNode.cs" />
+    <Compile Include="swig\spShadingStepNode.cs" />
+    <Compile Include="swig\spShadingSubtractNode.cs" />
+    <Compile Include="swig\spShadingSwizzlingNode.cs" />
+    <Compile Include="swig\spShadingTextureNode.cs" />
+    <Compile Include="swig\spShadingVertexColorNode.cs" />
+    <Compile Include="swig\spShortArray.cs" />
+    <Compile Include="swig\spShortData.cs" />
+    <Compile Include="swig\spString.cs" />
+    <Compile Include="swig\spStringArray.cs" />
+    <Compile Include="swig\spSurfaceMapper.cs" />
+    <Compile Include="swig\spTable.cs" />
+    <Compile Include="swig\spTexture.cs" />
+    <Compile Include="swig\spTextureTable.cs" />
+    <Compile Include="swig\spTransform3.cs" />
+    <Compile Include="swig\spUnsignedCharArray.cs" />
+    <Compile Include="swig\spUnsignedCharData.cs" />
+    <Compile Include="swig\spUnsignedIntArray.cs" />
+    <Compile Include="swig\spUnsignedIntData.cs" />
+    <Compile Include="swig\spUnsignedLongArray.cs" />
+    <Compile Include="swig\spUnsignedLongData.cs" />
+    <Compile Include="swig\spUnsignedShortArray.cs" />
+    <Compile Include="swig\spUnsignedShortData.cs" />
+    <Compile Include="swig\spUVAnalyzer.cs" />
+    <Compile Include="swig\spValueArray.cs" />
+    <Compile Include="swig\spVertexColorBaker.cs" />
+    <Compile Include="swig\spVisibilitySettings.cs" />
+    <Compile Include="swig\spWavefrontExporter.cs" />
+    <Compile Include="swig\spWavefrontImporter.cs" />
+    <Compile Include="swig\StopCondition.cs" />
+    <Compile Include="swig\SWIGTYPE_p_bool.cs" />
+    <Compile Include="swig\SWIGTYPE_p_double.cs" />
+    <Compile Include="swig\SWIGTYPE_p_float.cs" />
+    <Compile Include="swig\SWIGTYPE_p_int.cs" />
+    <Compile Include="swig\SWIGTYPE_p_intptr_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_long.cs" />
+    <Compile Include="swig\SWIGTYPE_p_p_void.cs" />
+    <Compile Include="swig\SWIGTYPE_p_short.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__CountedPointerT_SimplygonSDK__IObject_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IBinaryExporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IBinaryImporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IBoneSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IBoolArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IBoolData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ICamera.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ICameraPath.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ICharArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ICharData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IChartAggregator.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IChunkedImageData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IColorCaster.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IDirectXRenderer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IDisplacementCaster.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IDoubleArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IDoubleData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IFieldData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IFloatArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IFloatData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryAnalyzer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryDataCollection.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryGroup.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryTangentCalculator.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGeometryValidator.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGraphicsExporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IGraphicsImporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IImageData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IImageDataExporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IImageDataImporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IImpostorProcessor.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IImpostorSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IIntArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IIntData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ILongArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ILongData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMappingImage.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMappingImageMeshData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMappingImageSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMaterial.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMaterialCaster.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMaterialTable.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IMatrix4x4.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__INormalAnalyzer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__INormalCalculationSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__INormalCaster.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__INormalRepairer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IObjectCollection.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IOpacityCaster.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IPackedGeometryData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IParameterizer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IProcessingObject.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRcharArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRcharData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRealArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRealData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IReductionProcessor.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IReductionSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRemeshingProcessor.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRemeshingSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRepairSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRhandleArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRhandleData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRidArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IRidData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IScene.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneAggregator.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneAggregatorSettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneBone.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneBoneTable.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneLodGroup.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneMesh.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISceneNodeCollection.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISettingsObject.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShaderData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingAddNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingClampNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingColorNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingCustomNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingDivideNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingFilterNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingInterpolateNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingMaxNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingMinNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingMultiplyNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingStepNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingSubtractNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingSwizzlingNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingTextureNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShadingVertexColorNode.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShortArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IShortData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IString.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IStringArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ISurfaceMapper.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ITable.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ITexture.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ITextureTable.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__ITransform3.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedCharArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedCharData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedIntArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedIntData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedLongArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedLongData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedShortArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUnsignedShortData.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IUVAnalyzer.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IValueArray.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IVertexColorBaker.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IVisibilitySettings.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IWavefrontExporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__IWavefrontImporter.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IBoolData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__ICharData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IDoubleData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IFloatData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IIntData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__ILongData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IRcharData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IRealData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IRhandleData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IRidData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IShortData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IUnsignedCharData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IUnsignedIntData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IUnsignedLongData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IUnsignedShortData_t.cs" />
+    <Compile Include="swig\SWIGTYPE_p_unsigned_char.cs" />
+    <Compile Include="swig\SWIGTYPE_p_unsigned_int.cs" />
+    <Compile Include="swig\SWIGTYPE_p_unsigned_long.cs" />
+    <Compile Include="swig\SWIGTYPE_p_unsigned_short.cs" />
+    <Compile Include="swig\SWIGTYPE_p_void.cs" />
+    <Compile Include="swig\TangentSpaceMethod.cs" />
+    <Compile Include="swig\TextureBlendType.cs" />
+    <Compile Include="swig\ValidationFrequency.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

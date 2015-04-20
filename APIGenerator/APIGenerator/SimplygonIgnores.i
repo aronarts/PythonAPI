@@ -108,6 +108,16 @@
 %ignore *::operator SimplygonSDK::IVertexColorBaker*;
 %ignore *::operator SimplygonSDK::IVisibilitySettings*;
 %ignore *::operator SimplygonSDK::IString*;
+%ignore *::operator SimplygonSDK::IImpostorSettings*;
+%ignore *::operator SimplygonSDK::IImpostorProcessor*;
+%ignore *::operator SimplygonSDK::ISurfaceMapper*;
+%ignore *::operator SimplygonSDK::IShadingStepNode*;
+%ignore *::operator SimplygonSDK::IShadingMinNode*;
+%ignore *::operator SimplygonSDK::IShadingMaxNode*;
+%ignore *::operator SimplygonSDK::INormalAnalyzer*;
+%ignore *::operator SimplygonSDK::IImageDataExporter*;
+%ignore *::operator SimplygonSDK::IGeometryAnalyzer*;
+%ignore *::operator SimplygonSDK::IUVAnalyzer*;
 
 // Don't generate api classes for the interfaces, only for the smart pointers. Keeps the size down.
 %ignore IArray;
@@ -216,6 +226,16 @@
 %ignore IVertexColorBaker;
 %ignore IVisibilitySettings;
 %ignore IString;
+%ignore IImpostorSettings;
+%ignore IImpostorProcessor;
+%ignore ISurfaceMapper;
+%ignore IShadingStepNode;
+%ignore IShadingMinNode;
+%ignore IShadingMaxNode;
+%ignore INormalAnalyzer;
+%ignore IImageDataExporter;
+%ignore IGeometryAnalyzer;
+%ignore IUVAnalyzer;
 
 
 // Additional cast operators that needs to be ignored

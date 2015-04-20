@@ -105,5 +105,14 @@
 %template(spVertexColorBaker) SimplygonSDK::CountedPointer<IVertexColorBaker >;
 %template(spVisibilitySettings) SimplygonSDK::CountedPointer<IVisibilitySettings >;
 %template(spString) SimplygonSDK::CountedPointer<IString >;
-
+%template(spImpostorProcessor) SimplygonSDK::CountedPointer<IImpostorProcessor >;
+%template(spImpostorSettings) SimplygonSDK::CountedPointer<IImpostorSettings >;
+%template(spSurfaceMapper) SimplygonSDK::CountedPointer<ISurfaceMapper>;
+%template(spShadingStepNode) SimplygonSDK::CountedPointer<IShadingStepNode>;
+%template(spShadingMinNode) SimplygonSDK::CountedPointer<IShadingMinNode>;
+%template(spShadingMaxNode) SimplygonSDK::CountedPointer<IShadingMaxNode>;
+%template(spNormalAnalyzer) SimplygonSDK::CountedPointer<INormalAnalyzer>;
+%template(spImageDataExporter) SimplygonSDK::CountedPointer<IImageDataExporter>;
+%template(spGeometryAnalyzer) SimplygonSDK::CountedPointer<IGeometryAnalyzer>;
+%template(spUVAnalyzer) SimplygonSDK::CountedPointer<IUVAnalyzer>;
 

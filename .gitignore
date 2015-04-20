@@ -236,6 +236,6 @@ APIGenerator/APIGenerator/SimplygonSDK_wrap.cxx
 Examples/Output/*
 Examples/SimplygonSDK.py
 Examples/_SimplygonSDK.pyd
-
+Apigenerator/SimplygonSDKCLR/swig/*.cs
 *.pyc
 *.swatch

@@ -1,9 +1,21 @@
+#if defined(SWIGCSHARP)
+typedef char* LPCTSTR;
+typedef char* LPTSTR;
+	/*%typemap(in) LPCTSTR, LPTSTR {
+	   $1 = (const char**)($input);
+	}
+	
+	%typemap(out) LPCTSTR, LPTSTR{
+	   $result = (const char**)($1);	
+	} */
+#endif // defined(SWIGCSHARP)
+
 namespace SimplygonSDK {
 	
 
 	// Declare types that can be converted
 
-
+#if defined(SWIGPYTHON)
 	%typemap(in) LPCTSTR, LPTSTR {
 	   $1 = PyString_AsString($input);
 	}
@@ -11,6 +23,10 @@ namespace SimplygonSDK {
 	%typemap(out) LPCTSTR, LPTSTR{
 	   $result = PyString_FromString($1);	
 	} 
+#endif // defined(SWIGPYTHON)
+
+
+
 
 	/// Adds a location to look for the DLL in. This method must be called before calling Initialize()
 	extern void AddSearchPath( const char * search_path );

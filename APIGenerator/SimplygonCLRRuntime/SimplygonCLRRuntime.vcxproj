@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{14A3397C-832F-4AEB-B0CE-F0C3A025AFC3}</ProjectGuid>
-    <RootNamespace>APIGenerator</RootNamespace>
-    <ProjectName>SimplygonSDK</ProjectName>
+    <ProjectGuid>{666A0E02-8337-4037-A38F-3BCF5AE4841B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SimplygonCLRRuntime</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -37,7 +37,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -67,123 +67,111 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>_$(ProjectName)</TargetName>
-    <TargetExt>.pyd</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>_$(ProjectName)</TargetName>
-    <TargetExt>.pyd</TargetExt>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>_$(ProjectName)</TargetName>
-    <TargetExt>.pyd</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>_$(ProjectName)</TargetName>
-    <TargetExt>.pyd</TargetExt>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(PYTHONPATH)\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SIMPLYGONCLRRUNTIME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../APIGenerator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(PYTHONPATH)\libs</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\Examples </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(PYTHONPATH)\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SIMPLYGONCLRRUNTIME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../APIGenerator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\274\libs</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(PYTHONPATH)\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SIMPLYGONCLRRUNTIME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../APIGenerator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(PYTHONPATH)\libs</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\Examples </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(PYTHONPATH)\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SIMPLYGONCLRRUNTIME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../APIGenerator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(PYTHONPATH)\libs</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SimplygonSDKLoader.cpp" />
-    <ClCompile Include="SimplygonSDK_wrap.cxx">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(PYTHONPATH)\include\</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(PYTHONPATH)\include\</AdditionalIncludeDirectories>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\APIGenerator\SimplygonExtensions.i" />
+    <None Include="..\APIGenerator\SimplygonIgnores.i" />
+    <None Include="..\APIGenerator\SimplygonLoader.i" />
+    <CustomBuild Include="..\APIGenerator\SimplygonSDK.i">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swig -c++ -csharp -dllimport SimplygonCLRRuntime -namespace SimplygonSDKCLR -outdir $(SolutionDir)\SimplygonSDKCLR\swig -o $(ProjectDir)\simplygon_swig.cpp %(Identity) </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -csharp -dllimport SimplygonCLRRuntime -namespace SimplygonSDKCLR -outdir $(SolutionDir)\SimplygonSDKCLR\swig -o $(ProjectDir)\simplygon_swig.cpp %(Identity) </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
+    </CustomBuild>
+    <None Include="..\APIGenerator\SimplygonTemplates.i" />
+    <None Include="..\APIGenerator\SimplygonTypemaps.i" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\APIGenerator\SimplygonSDKLoader.cpp" />
+    <ClCompile Include="simplygon_swig.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="SimplygonSDK.h" />
-    <ClInclude Include="SimplygonSDKLoader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="SimplygonSDK.i">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swig -c++ -python -outdir $(Outdir) %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -python -outdir $(Outdir) %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) %(Identity)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) %(Identity)</Message>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\simplygonsdkclr\datacreationpreferences.cs" />
-    <None Include="SimplygonIgnores.i" />
-    <None Include="SimplygonLoader.i" />
-    <None Include="SimplygonTemplates.i" />
-    <None Include="SimplygonTypemaps.i" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="SimplygonExtensions.i" />
+    <ClInclude Include="..\APIGenerator\Logger.h" />
+    <ClInclude Include="..\APIGenerator\SimplygonSDK.h" />
+    <ClInclude Include="..\APIGenerator\SimplygonSDKLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

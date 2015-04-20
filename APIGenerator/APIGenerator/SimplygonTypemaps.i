@@ -1,3 +1,4 @@
+#if defined(SWIGPYTHON)
 %typemap(in) SimplygonSDK::real *tuple {
 		int i;
 		if (!PyList_Check($input))
@@ -630,7 +631,18 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spString)
   EndAllowedTypes()
 }
+%typemap(in) SimplygonSDK::IImpostorProcessor * {
+  BeginAllowedTypes()
+  AllowedType(spImpostorProcessor)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IImpostorSettings * {
+  BeginAllowedTypes()
+  AllowedType(spImpostorSettings)
+  EndAllowedTypes()
+}
 
 
 
 
+#endif // defined(SWIGPYTHON)
