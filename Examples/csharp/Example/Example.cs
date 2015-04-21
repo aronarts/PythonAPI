@@ -8,9 +8,9 @@ namespace Example
 {
     public class Example
     {
-        static public ISimplygonSDK InitExample()
+        public static ISimplygonSDK InitExample()
         {
-           	// Initiate
+          	// Initiate
 	        SimplygonSDK.AddSearchPath( "..\\Build\\");
 	        SimplygonSDK.AddSearchPath( "..\\..\\Build\\");
 	        SimplygonSDK.AddSearchPath( "..\\..\\..\\Build\\");
