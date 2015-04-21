@@ -374,6 +374,9 @@ namespace SimplygonSDK {
 #endif // defined(SWIGCSHARP)
 
 
+
+#include <stdint.h>		// Use the C99 official header
+
 SWIGINTERN SimplygonSDK::CountedPointer< SimplygonSDK::ISceneMesh > SimplygonSDK_CountedPointer_Sl_ISceneNode_Sg__AsSceneMesh(SimplygonSDK::CountedPointer< ISceneNode > *self){
         return CountedPointer<ISceneMesh>(ISceneMesh::SafeCast(*self));
     }
@@ -35360,66 +35363,54 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_ISimplygonSDK_GetVersion(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISimplygonSDK_SetGlobalSetting(void * jarg1, char * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISimplygonSDK_SetGlobalSetting(void * jarg1, char * jarg2, int jarg3) {
   SimplygonSDK::ISimplygonSDK *arg1 = (SimplygonSDK::ISimplygonSDK *) 0 ;
   char *arg2 = (char *) 0 ;
   intptr_t arg3 ;
-  intptr_t *argp3 ;
   
   arg1 = (SimplygonSDK::ISimplygonSDK *)jarg1; 
   arg2 = (char *)jarg2; 
-  argp3 = (intptr_t *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null intptr_t", 0);
-    return ;
-  }
-  arg3 = *argp3; 
+  arg3 = (intptr_t)jarg3; 
   ((SimplygonSDK::ISimplygonSDK const *)arg1)->SetGlobalSetting((char const *)arg2,arg3);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ISimplygonSDK_GetGlobalSetting(void * jarg1, char * jarg2) {
-  void * jresult ;
+SWIGEXPORT int SWIGSTDCALL CSharp_ISimplygonSDK_GetGlobalSetting(void * jarg1, char * jarg2) {
+  int jresult ;
   SimplygonSDK::ISimplygonSDK *arg1 = (SimplygonSDK::ISimplygonSDK *) 0 ;
   char *arg2 = (char *) 0 ;
   intptr_t result;
   
   arg1 = (SimplygonSDK::ISimplygonSDK *)jarg1; 
   arg2 = (char *)jarg2; 
-  result = ((SimplygonSDK::ISimplygonSDK const *)arg1)->GetGlobalSetting((char const *)arg2);
-  jresult = new intptr_t((const intptr_t &)result); 
+  result = (intptr_t)((SimplygonSDK::ISimplygonSDK const *)arg1)->GetGlobalSetting((char const *)arg2);
+  jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISimplygonSDK_SetThreadLocalSetting(void * jarg1, char * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISimplygonSDK_SetThreadLocalSetting(void * jarg1, char * jarg2, int jarg3) {
   SimplygonSDK::ISimplygonSDK *arg1 = (SimplygonSDK::ISimplygonSDK *) 0 ;
   char *arg2 = (char *) 0 ;
   intptr_t arg3 ;
-  intptr_t *argp3 ;
   
   arg1 = (SimplygonSDK::ISimplygonSDK *)jarg1; 
   arg2 = (char *)jarg2; 
-  argp3 = (intptr_t *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null intptr_t", 0);
-    return ;
-  }
-  arg3 = *argp3; 
+  arg3 = (intptr_t)jarg3; 
   ((SimplygonSDK::ISimplygonSDK const *)arg1)->SetThreadLocalSetting((char const *)arg2,arg3);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ISimplygonSDK_GetThreadLocalSetting(void * jarg1, char * jarg2) {
-  void * jresult ;
+SWIGEXPORT int SWIGSTDCALL CSharp_ISimplygonSDK_GetThreadLocalSetting(void * jarg1, char * jarg2) {
+  int jresult ;
   SimplygonSDK::ISimplygonSDK *arg1 = (SimplygonSDK::ISimplygonSDK *) 0 ;
   char *arg2 = (char *) 0 ;
   intptr_t result;
   
   arg1 = (SimplygonSDK::ISimplygonSDK *)jarg1; 
   arg2 = (char *)jarg2; 
-  result = ((SimplygonSDK::ISimplygonSDK const *)arg1)->GetThreadLocalSetting((char const *)arg2);
-  jresult = new intptr_t((const intptr_t &)result); 
+  result = (intptr_t)((SimplygonSDK::ISimplygonSDK const *)arg1)->GetThreadLocalSetting((char const *)arg2);
+  jresult = result; 
   return jresult;
 }
 

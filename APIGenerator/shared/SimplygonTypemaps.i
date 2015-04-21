@@ -668,5 +668,5 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
 %apply unsigned short INPUT[]  {unsigned short *tuple}
 %apply unsigned short OUTPUT[]  {unsigned short *dest_param}
 
-
+%include "stdint.i"
 #endif // defined(SWIGCSHARP)

@@ -1,13 +1,7 @@
 #if defined(SWIGCSHARP)
 typedef char* LPCTSTR;
 typedef char* LPTSTR;
-	/*%typemap(in) LPCTSTR, LPTSTR {
-	   $1 = (const char**)($input);
-	}
-	
-	%typemap(out) LPCTSTR, LPTSTR{
-	   $result = (const char**)($1);	
-	} */
+
 #endif // defined(SWIGCSHARP)
 
 namespace SimplygonSDK {
