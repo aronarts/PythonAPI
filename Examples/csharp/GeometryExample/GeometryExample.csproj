@@ -63,14 +63,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimplygonSDKCLR\SimplygonSDKCLR.csproj">
+    <ProjectReference Include="..\..\..\APIGenerator\SimplygonSDKCLR\SimplygonSDKCLR.csproj">
       <Project>{5d0e4d73-8aee-4004-9c85-e2422e61fa99}</Project>
       <Name>SimplygonSDKCLR</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)\x64\$(ConfigurationName)\SimplygonCLRRuntime.dll $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(SolutionDir)..\..\ApiGenerator\x64\$(ConfigurationName)\SimplygonCLRRuntime.dll $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
