@@ -29,18 +29,6 @@ namespace GeometryExample
             Console.WriteLine("Simplygon version: " + sdk.GetVersion());
             RunHighQualityReduction(sdk, @"c:\temp\out");
         }
-        public static T SimplygonCast<T>(object from, bool cMemoryOwn)
-        {
-            System.Reflection.MethodInfo CPtrGetter = from.GetType().GetMethod("getCPtr", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            return CPtrGetter == null ? default(T) : (T)System.Activator.CreateInstance
-            (
-                typeof(T),
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance,
-                null,
-                new object[] { ((HandleRef)CPtrGetter.Invoke(null, new object[] { from })).Handle, cMemoryOwn },
-                null
-            );
-        }
 
         private static void RunHighQualityReduction(ISimplygonSDK SDK, string writeTo)
         {
@@ -151,7 +139,7 @@ namespace GeometryExample
 
                     // Generate the output filenames
                     string outputGeomFilename = writeTo + ".obj";
-                    spSceneMesh topmesh = SimplygonCast<spSceneMesh>(scene.GetRootNode().GetChild(0), false);
+                    spSceneMesh topmesh = Utils.SimplygonCast<spSceneMesh>(scene.GetRootNode().GetChild(0), false);
 		            
 
                     // Do the actual exporting

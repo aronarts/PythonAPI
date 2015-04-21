@@ -359,6 +359,7 @@
     <Compile Include="swig\TangentSpaceMethod.cs" />
     <Compile Include="swig\TextureBlendType.cs" />
     <Compile Include="swig\ValidationFrequency.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
