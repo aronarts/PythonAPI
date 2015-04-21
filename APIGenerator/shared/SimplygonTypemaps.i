@@ -648,6 +648,7 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
 %include "arrays_csharp.i"
 %apply float INPUT[]  {float *tuple}
 %apply float OUTPUT[]  {float *dest_param}
+%apply float OUTPUT[]  {float dest_param[3]}
 %apply int INPUT[]  {int *tuple}
 %apply int OUTPUT[]  {int *dest_param}
 %apply bool INPUT[]  {bool *tuple}

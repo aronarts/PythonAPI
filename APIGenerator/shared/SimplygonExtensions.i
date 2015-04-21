@@ -151,5 +151,23 @@
 		return d.__deref__();
 	}
 %}
+%typemap(cscode) SimplygonSDK::IMaterial %{
+	public static implicit operator IMaterial(spMaterial d) {
+		return d.__deref__();
+	}
+%}
+%typemap(cscode) SimplygonSDK::IMappingImage%{
+	public static implicit operator IMappingImage(spMappingImage d) {
+		return d.__deref__();
+	}
+%}
+
+
+
+%typemap(csattributes) SimplygonSDK::FeatureFlags "[Flags]"
+%typemap(csimports) SimplygonSDK::FeatureFlags
+%{
+using System;
+%}
 
 #endif // defined(SWIGCSHARP)

@@ -13366,13 +13366,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_IGeometryData_GetCustomField(void * jarg1, 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IGeometryData_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IGeometryData_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::IGeometryData *arg1 = (SimplygonSDK::IGeometryData *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IGeometryData *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -13858,13 +13860,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IGeometryData_DetectEdgeNeighbours(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IGeometryData_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IGeometryData_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::IGeometryData *arg1 = (SimplygonSDK::IGeometryData *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IGeometryData *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -14188,13 +14192,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_IPackedGeometryData_GetVertexIds(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IPackedGeometryData_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IPackedGeometryData_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::IPackedGeometryData *arg1 = (SimplygonSDK::IPackedGeometryData *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IPackedGeometryData *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -14566,13 +14572,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IPackedGeometryData_SetVertexCount(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IPackedGeometryData_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IPackedGeometryData_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::IPackedGeometryData *arg1 = (SimplygonSDK::IPackedGeometryData *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IPackedGeometryData *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -24856,23 +24864,27 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IScene_RemoveCustomField(void * jarg1, char *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IScene_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IScene_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::IScene *arg1 = (SimplygonSDK::IScene *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IScene *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IScene_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IScene_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::IScene *arg1 = (SimplygonSDK::IScene *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IScene *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -25018,13 +25030,15 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ISceneNode_GetIsFrozen(void * jarg1) 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneNode_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneNode_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneNode *arg1 = (SimplygonSDK::ISceneNode *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneNode *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -25274,13 +25288,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ISceneNode_SetIsVisible(void * jarg1, unsigne
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneNode_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneNode_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneNode *arg1 = (SimplygonSDK::ISceneNode *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneNode *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -25842,13 +25858,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_SetIsVisible(void * jarg1, unsigne
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneMesh *arg1 = (SimplygonSDK::ISceneMesh *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneMesh *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -25876,13 +25894,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_RemoveChild(void * jarg1, void * j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneMesh_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneMesh *arg1 = (SimplygonSDK::ISceneMesh *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneMesh *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -26094,13 +26114,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ISceneLodGroup_SafeCast(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneLodGroup_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneLodGroup_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneLodGroup *arg1 = (SimplygonSDK::ISceneLodGroup *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneLodGroup *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -26238,13 +26260,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ISceneLodGroup_SetNid(void * jarg1, char * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneLodGroup_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneLodGroup_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneLodGroup *arg1 = (SimplygonSDK::ISceneLodGroup *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneLodGroup *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -26812,13 +26836,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ISceneBone_GetScene(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneBone_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneBone_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneBone *arg1 = (SimplygonSDK::ISceneBone *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneBone *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -26832,13 +26858,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ISceneBone_CollectAllChildBones(void * jarg1,
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ISceneBone_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ISceneBone_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::ISceneBone *arg1 = (SimplygonSDK::ISceneBone *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::ISceneBone *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -33704,13 +33732,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IImpostorSettings_SetUseTightFitting(void * j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IImpostorSettings_GetViewDirection(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IImpostorSettings_GetViewDirection(void * jarg1, float* jarg2) {
   SimplygonSDK::IImpostorSettings *arg1 = (SimplygonSDK::IImpostorSettings *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IImpostorSettings *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetViewDirection(arg2);
+  
+  
 }
 
 
@@ -45144,13 +45174,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_spGeometryData_GetCustomField(void * jarg1,
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spGeometryData_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spGeometryData_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IGeometryData > *arg1 = (SimplygonSDK::CountedPointer< IGeometryData > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IGeometryData > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -45628,13 +45660,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spGeometryData_DetectEdgeNeighbours(void * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spGeometryData_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spGeometryData_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IGeometryData > *arg1 = (SimplygonSDK::CountedPointer< IGeometryData > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IGeometryData > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -57310,13 +57344,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_spPackedGeometryData_GetVertexIds(void * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spPackedGeometryData_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spPackedGeometryData_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IPackedGeometryData > *arg1 = (SimplygonSDK::CountedPointer< IPackedGeometryData > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IPackedGeometryData > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -57688,13 +57724,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spPackedGeometryData_SetVertexCount(void * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spPackedGeometryData_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spPackedGeometryData_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IPackedGeometryData > *arg1 = (SimplygonSDK::CountedPointer< IPackedGeometryData > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IPackedGeometryData > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -65370,23 +65408,27 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spScene_RemoveCustomField(void * jarg1, char 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spScene_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spScene_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IScene > *arg1 = (SimplygonSDK::CountedPointer< IScene > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IScene > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spScene_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spScene_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IScene > *arg1 = (SimplygonSDK::CountedPointer< IScene > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IScene > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -66628,13 +66670,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_spSceneBone_GetScene(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneBone_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneBone_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneBone > *arg1 = (SimplygonSDK::CountedPointer< ISceneBone > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneBone > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -66648,13 +66692,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spSceneBone_CollectAllChildBones(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneBone_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneBone_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneBone > *arg1 = (SimplygonSDK::CountedPointer< ISceneBone > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneBone > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -67344,13 +67390,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_spSceneLodGroup_SafeCast(void * jarg1, void
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneLodGroup_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneLodGroup_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneLodGroup > *arg1 = (SimplygonSDK::CountedPointer< ISceneLodGroup > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneLodGroup > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -67488,13 +67536,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spSceneLodGroup_SetNid(void * jarg1, char * j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneLodGroup_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneLodGroup_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneLodGroup > *arg1 = (SimplygonSDK::CountedPointer< ISceneLodGroup > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneLodGroup > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -68060,13 +68110,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_SetIsVisible(void * jarg1, unsign
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneMesh > *arg1 = (SimplygonSDK::CountedPointer< ISceneMesh > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneMesh > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -68094,13 +68146,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_RemoveChild(void * jarg1, void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneMesh_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneMesh > *arg1 = (SimplygonSDK::CountedPointer< ISceneMesh > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneMesh > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -68536,13 +68590,15 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_spSceneNode_GetIsFrozen(void * jarg1)
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneNode_GetSup(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneNode_GetSup(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneNode > *arg1 = (SimplygonSDK::CountedPointer< ISceneNode > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneNode > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetSup(arg2);
+  
+  
 }
 
 
@@ -68792,13 +68848,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spSceneNode_SetIsVisible(void * jarg1, unsign
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spSceneNode_GetInf(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spSceneNode_GetInf(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< ISceneNode > *arg1 = (SimplygonSDK::CountedPointer< ISceneNode > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< ISceneNode > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetInf(arg2);
+  
+  
 }
 
 
@@ -84700,13 +84758,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spImpostorSettings_SetUseTightFitting(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spImpostorSettings_GetViewDirection(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spImpostorSettings_GetViewDirection(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IImpostorSettings > *arg1 = (SimplygonSDK::CountedPointer< IImpostorSettings > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IImpostorSettings > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetViewDirection(arg2);
+  
+  
 }
 
 
