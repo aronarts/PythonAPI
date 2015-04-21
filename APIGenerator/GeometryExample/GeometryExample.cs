@@ -151,7 +151,7 @@ namespace GeometryExample
 
                     // Generate the output filenames
                     string outputGeomFilename = writeTo + ".obj";
-                    ISceneMesh topmesh = SimplygonCast<ISceneMesh>(scene.GetRootNode().GetChild(0), false);
+                    spSceneMesh topmesh = SimplygonCast<spSceneMesh>(scene.GetRootNode().GetChild(0), false);
 		            
 
                     // Do the actual exporting
