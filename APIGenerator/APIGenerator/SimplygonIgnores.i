@@ -119,7 +119,9 @@
 %ignore *::operator SimplygonSDK::IGeometryAnalyzer*;
 %ignore *::operator SimplygonSDK::IUVAnalyzer*;
 
-// Don't generate api classes for the interfaces, only for the smart pointers. Keeps the size down.
+#if defined(SWIGPYTHON)
+// Don't generate api classes for python for the interfaces, only for the smart pointers. Keeps the size down.
+// Note, csharp needs them in order to inject auto conversion operators
 %ignore IArray;
 %ignore IBinaryExporter;
 %ignore IBinaryImporter;
@@ -236,7 +238,7 @@
 %ignore IImageDataExporter;
 %ignore IGeometryAnalyzer;
 %ignore IUVAnalyzer;
-
+#endif // defined(SWIGPYTHON)
 
 // Additional cast operators that needs to be ignored
 %ignore *::operator const value_type*;

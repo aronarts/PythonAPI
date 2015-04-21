@@ -33,7 +33,7 @@ namespace SimplygonSDK {
 
 	extern ISimplygonSDK *GetSDK();
 #if defined(SWIGPYTHON)
-
+	// Python specific stuff
 	class error_handler : public SimplygonSDK::rerrorhandler
 	{
 	public:
@@ -62,8 +62,9 @@ namespace SimplygonSDK {
 	}
 }
 #endif // defined(SWIGPYTHON)
-#if defined(SWIGCSHARP)
 
+#if defined(SWIGCSHARP)
+	// Csharp speficic stuff
 	/*class error_handler : public SimplygonSDK::rerrorhandler
 	{
 	public:

@@ -641,8 +641,31 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spImpostorSettings)
   EndAllowedTypes()
 }
-
-
-
-
 #endif // defined(SWIGPYTHON)
+
+#if defined(SWIGCSHARP)
+// Map tuples to c# arrays
+%include "arrays_csharp.i"
+%apply float INPUT[]  {float *tuple}
+%apply float OUTPUT[]  {float *dest_param}
+%apply int INPUT[]  {int *tuple}
+%apply int OUTPUT[]  {int *dest_param}
+%apply bool INPUT[]  {bool *tuple}
+%apply bool OUTPUT[]  {bool *dest_param}
+%apply double INPUT[]  {double *tuple}
+%apply double OUTPUT[]  {double *dest_param}
+%apply long INPUT[]  {long *tuple}
+%apply long OUTPUT[]  {long *dest_param}
+%apply short INPUT[]  {short *tuple}
+%apply short OUTPUT[]  {short *dest_param}
+%apply unsigned char INPUT[]  {unsigned char *tuple}
+%apply unsigned char OUTPUT[]  {unsigned char *dest_param}
+%apply unsigned int INPUT[]  {unsigned int *tuple}
+%apply unsigned int OUTPUT[]  {unsigned int *dest_param}
+%apply unsigned long INPUT[]  {unsigned long *tuple}
+%apply unsigned long OUTPUT[]  {unsigned long *dest_param}
+%apply unsigned short INPUT[]  {unsigned short *tuple}
+%apply unsigned short OUTPUT[]  {unsigned short *dest_param}
+
+
+#endif // defined(SWIGCSHARP)

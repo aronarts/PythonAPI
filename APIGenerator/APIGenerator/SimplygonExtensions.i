@@ -126,3 +126,24 @@
         return CountedPointer<ISceneBone>(ISceneBone::SafeCast(*$self));
     }
 }
+#if defined(SWIGCSHARP)
+// These are cast operators for c#
+%typemap(cscode) SimplygonSDK::IGeometryData %{
+	public static implicit operator IGeometryData(spGeometryData d) {
+		return d.__deref__();
+	}
+%}
+%typemap(cscode) SimplygonSDK::ISceneNode %{
+	public static implicit operator ISceneNode(spSceneNode d) {
+		return d.__deref__();
+	}
+	public static implicit operator ISceneNode(spSceneMesh d) {
+		return d.__deref__();
+	}
+%}
+%typemap(cscode) SimplygonSDK::ISceneMesh %{
+	public static implicit operator ISceneMesh(spSceneMesh d) {
+		return d.__deref__();
+	}
+%}
+#endif // defined(SWIGCSHARP)
