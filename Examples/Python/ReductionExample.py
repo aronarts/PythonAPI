@@ -47,16 +47,16 @@ def main():
     # Run HQ reduction example, reducing a single geometry to a single LOD
     print("Running HQ reduction... ");
     
-    RunHighQualityReduction(currentDir+"Assets/SimplygonMan.obj", currentDir+"Output/SimplygonMan_Rebaked_Materials_LOD" );
+    RunHighQualityReduction(currentDir+"../Assets/SimplygonMan.obj", currentDir+"Output/SimplygonMan_Rebaked_Materials_LOD" );
     print("Done.\n");
     # Run reduction example that bakes all input materials into a single output material
     print("Running reduction with material baking... ");
-    RunReductionWithTextureCasting(currentDir, "Assets/SimplygonMan.obj", "Output/SimplygonMan_Rebaked_Materials_LOD" );
+    RunReductionWithTextureCasting(currentDir, "../Assets/SimplygonMan.obj", "Output/SimplygonMan_Rebaked_Materials_LOD" );
     print("Done.\n");
 
     # Run a cascaded LOD chain generation
     print("Running cascaded LOD chain reduction... ");
-    RunCascadedLodChainReduction(currentDir, "Assets/SimplygonMan.obj", "Output/SimplygonMan_Cascade_LOD1", "Output/SimplygonMan_Cascade_LOD2", "Output/SimplygonMan_Cascade_LOD3" );
+    RunCascadedLodChainReduction(currentDir, "../Assets/SimplygonMan.obj", "Output/SimplygonMan_Cascade_LOD1", "Output/SimplygonMan_Cascade_LOD2", "Output/SimplygonMan_Cascade_LOD3" );
     print("Done.\n");
 
     # Done!

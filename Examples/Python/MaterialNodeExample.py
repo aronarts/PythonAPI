@@ -40,7 +40,7 @@ import sys
 #	perform material casting.
 #
 #####################################
-assetsPath = os.path.dirname(os.path.realpath(__file__))+"/Assets/MaterialNodeExampleAssets/"
+assetsPath = os.path.dirname(os.path.realpath(__file__))+"\\..\\Assets\\MaterialNodeExampleAssets\\"
 
 def main( ):
     Utils.InitExample()

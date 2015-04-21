@@ -111,7 +111,7 @@
       <AdditionalLibraryDirectories>C:\274\libs</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples </Command>
+      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples\Python </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,7 +149,7 @@
       <AdditionalLibraryDirectories>$(PYTHONPATH)\libs</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples </Command>
+      <Command>copy /y $(SolutionDir)$(Platform)\$(Configuration)\*.py* ..\..\Examples\Python </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

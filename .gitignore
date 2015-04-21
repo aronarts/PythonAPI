@@ -233,9 +233,9 @@ $RECYCLE.BIN/
 APIGenerator/APIGenerator/APIGenerator.vcxproj.filters
 APIGenerator/APIGenerator/SimplygonSDK_wrap.cxx
 #Example output folder
-Examples/Output/*
-Examples/SimplygonSDK.py
-Examples/_SimplygonSDK.pyd
+Examples/Python/Output/*
+Examples/Python/SimplygonSDK.py
+Examples/Python/_SimplygonSDK.pyd
 Apigenerator/SimplygonSDKCLR/swig/*.cs
 *.pyc
 *.swatch
