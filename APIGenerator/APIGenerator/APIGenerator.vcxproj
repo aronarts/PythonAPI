@@ -153,37 +153,37 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SimplygonSDKLoader.cpp" />
+    <ClCompile Include="..\shared\SimplygonSDKLoader.cpp" />
     <ClCompile Include="SimplygonSDK_wrap.cxx">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(PYTHONPATH)\include\</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(PYTHONPATH)\include\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="SimplygonSDK.h" />
-    <ClInclude Include="SimplygonSDKLoader.h" />
+    <ClInclude Include="..\shared\Logger.h" />
+    <ClInclude Include="..\shared\SimplygonSDK.h" />
+    <ClInclude Include="..\shared\SimplygonSDKLoader.h" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="SimplygonSDK.i">
+    <CustomBuild Include="..\shared\SimplygonSDK.i">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swig -c++ -python -outdir $(Outdir) %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -python -outdir $(Outdir) %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) %(Identity)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) %(Identity)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Message>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\simplygonsdkclr\datacreationpreferences.cs" />
-    <None Include="SimplygonIgnores.i" />
-    <None Include="SimplygonLoader.i" />
-    <None Include="SimplygonTemplates.i" />
-    <None Include="SimplygonTypemaps.i" />
+    <None Include="..\shared\SimplygonIgnores.i" />
+    <None Include="..\shared\SimplygonLoader.i" />
+    <None Include="..\shared\SimplygonTemplates.i" />
+    <None Include="..\shared\SimplygonTypemaps.i" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="SimplygonExtensions.i" />
+    <Text Include="..\shared\SimplygonExtensions.i" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

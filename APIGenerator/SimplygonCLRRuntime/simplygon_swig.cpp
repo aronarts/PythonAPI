@@ -280,9 +280,9 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_SimplygonSDK(SWIG_CSharpS
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
 
-#include "Logger.h"
-#include "SimplygonSDK.h"
-#include "SimplygonSDKLoader.h"
+#include "..\shared\Logger.h"
+#include "..\shared\SimplygonSDK.h"
+#include "..\shared\SimplygonSDKLoader.h"
 
 using namespace SimplygonSDK; 
 
