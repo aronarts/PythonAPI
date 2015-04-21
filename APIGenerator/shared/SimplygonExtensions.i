@@ -146,4 +146,10 @@
 		return d.__deref__();
 	}
 %}
+%typemap(cscode) SimplygonSDK::IMaterialTable %{
+	public static implicit operator IMaterialTable(spMaterialTable d) {
+		return d.__deref__();
+	}
+%}
+
 #endif // defined(SWIGCSHARP)
