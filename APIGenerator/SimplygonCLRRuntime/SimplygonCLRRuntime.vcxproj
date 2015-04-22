@@ -68,12 +68,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)x86\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)x86\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -155,6 +157,10 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -csharp -dllimport SimplygonCLRRuntime -namespace SimplygonSDKCLR -outdir $(SolutionDir)\SimplygonSDKCLR\swig -o $(ProjectDir)\simplygon_swig.cpp %(Identity) </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">swig -c++ -csharp -dllimport SimplygonCLRRuntime -namespace SimplygonSDKCLR -outdir $(SolutionDir)\SimplygonSDKCLR\swig -o $(ProjectDir)\simplygon_swig.cpp %(Identity) </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">swig -c++ -csharp -dllimport SimplygonCLRRuntime -namespace SimplygonSDKCLR -outdir $(SolutionDir)\SimplygonSDKCLR\swig -o $(ProjectDir)\simplygon_swig.cpp %(Identity) </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)\simplygon_swig.cpp</Outputs>
     </CustomBuild>
     <None Include="..\shared\SimplygonTemplates.i" />
     <None Include="..\shared\SimplygonTypemaps.i" />

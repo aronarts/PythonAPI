@@ -168,11 +168,11 @@
     <CustomBuild Include="..\shared\SimplygonSDK.i">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)_wrap.cxx;$(Outdir)%(Filename).py</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running Swig: swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">swig -c++ -python -outdir $(Outdir) -o $(ProjectDir)\simplygonSDK_wrap.cxx %(Identity)</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

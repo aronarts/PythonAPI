@@ -18,31 +18,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\APIGenerator\SimplygonExtensions.i" />
-    <None Include="..\APIGenerator\SimplygonIgnores.i" />
-    <None Include="..\APIGenerator\SimplygonLoader.i" />
-    <None Include="..\APIGenerator\SimplygonTemplates.i" />
-    <None Include="..\APIGenerator\SimplygonTypemaps.i" />
+    <None Include="..\shared\SimplygonExtensions.i" />
+    <None Include="..\shared\SimplygonIgnores.i" />
+    <None Include="..\shared\SimplygonLoader.i" />
+    <None Include="..\shared\SimplygonTemplates.i" />
+    <None Include="..\shared\SimplygonTypemaps.i" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\APIGenerator\SimplygonSDK.i" />
+    <CustomBuild Include="..\shared\SimplygonSDK.i" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="simplygon_swig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\APIGenerator\SimplygonSDKLoader.cpp">
+    <ClCompile Include="..\shared\SimplygonSDKLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\APIGenerator\Logger.h">
+    <ClInclude Include="..\shared\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\APIGenerator\SimplygonSDK.h">
+    <ClInclude Include="..\shared\SimplygonSDK.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\APIGenerator\SimplygonSDKLoader.h">
+    <ClInclude Include="..\shared\SimplygonSDKLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
