@@ -140,6 +140,9 @@
 	public static implicit operator ISceneNode(spSceneMesh d) {
 		return d.__deref__();
 	}
+	public static implicit operator ISceneNode(spSceneBone d) {
+		return d.__deref__();
+	}
 %}
 %typemap(cscode) SimplygonSDK::ISceneMesh %{
 	public static implicit operator ISceneMesh(spSceneMesh d) {
@@ -156,12 +159,22 @@
 		return d.__deref__();
 	}
 %}
-%typemap(cscode) SimplygonSDK::IMappingImage%{
+%typemap(cscode) SimplygonSDK::IMappingImage %{
 	public static implicit operator IMappingImage(spMappingImage d) {
 		return d.__deref__();
 	}
 %}
+%typemap(cscode) SimplygonSDK::ISceneBone %{
+	public static implicit operator ISceneBone(spSceneBone d) {
+		return d.__deref__();
+	}
+%}
 
+%typemap(cscode) SimplygonSDK::IMatrix4x4 %{
+	public static implicit operator IMatrix4x4(spMatrix4x4 d) {
+		return d.__deref__();
+	}
+%}
 
 
 %typemap(csattributes) SimplygonSDK::FeatureFlags "[Flags]"

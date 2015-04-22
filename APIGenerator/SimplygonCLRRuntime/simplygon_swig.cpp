@@ -16665,13 +16665,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IMatrix4x4_SetToRotationTransform(void * jarg
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IMatrix4x4_GetElements(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IMatrix4x4_GetElements(void * jarg1, float* jarg2) {
   SimplygonSDK::IMatrix4x4 *arg1 = (SimplygonSDK::IMatrix4x4 *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::IMatrix4x4 *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (arg1)->GetElements(arg2);
+  
+  
 }
 
 
@@ -54701,13 +54703,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_spMatrix4x4_SetToRotationTransform(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_spMatrix4x4_GetElements(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_spMatrix4x4_GetElements(void * jarg1, float* jarg2) {
   SimplygonSDK::CountedPointer< IMatrix4x4 > *arg1 = (SimplygonSDK::CountedPointer< IMatrix4x4 > *) 0 ;
   SimplygonSDK::real *arg2 ;
   
   arg1 = (SimplygonSDK::CountedPointer< IMatrix4x4 > *)jarg1; 
-  arg2 = (SimplygonSDK::real *)jarg2; 
+  arg2 = jarg2;
   (*arg1)->GetElements(arg2);
+  
+  
 }
 
 

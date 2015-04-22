@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 public class Utils
 {
-    public static T SimplygonCast<T>(object from, bool cMemoryOwn)
+    public static T SimplygonCast<T>(object from, bool cMemoryOwn = false)
     {
         System.Reflection.MethodInfo CPtrGetter = from.GetType().GetMethod("getCPtr", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
         return CPtrGetter == null ? default(T) : (T)System.Activator.CreateInstance

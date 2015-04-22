@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemeshingExample", "RemeshingExample\RemeshingExample.csproj", "{22D299EC-383B-4856-AAB5-4A745B64C288}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoneReductionExample", "BoneReductionExample\BoneReductionExample.csproj", "{EDB9A6D7-67AE-417A-B708-2EEC922C0849}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,19 @@ Global
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Release|x64.ActiveCfg = Release|x64
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Release|x64.Build.0 = Release|x64
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Release|x86.ActiveCfg = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x64.ActiveCfg = Debug|x64
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x64.Build.0 = Debug|x64
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|x64.ActiveCfg = Release|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

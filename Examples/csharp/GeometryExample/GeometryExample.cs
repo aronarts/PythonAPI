@@ -35,7 +35,6 @@ namespace GeometryExample
     
             const int vertex_count = 12;
 	        const int triangle_count = 4;
-	        const int corner_count = triangle_count * 3;
 
         	// 4 triangles x 3 indices ( or 3 corners )
 	        int[] corner_ids = { 0, 1, 2,

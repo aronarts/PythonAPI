@@ -239,6 +239,7 @@ Examples/Python/_SimplygonSDK.pyd
 Examples/temp/*.obj
 Examples/temp/*.mtl
 Examples/temp/*.png
+Examples/temp/*.sgscene
 Apigenerator/SimplygonSDKCLR/swig/*.cs
 *.pyc
 *.swatch
