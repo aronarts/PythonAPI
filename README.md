@@ -56,6 +56,7 @@ This project generates a API that makes the Simplygon API accessible through pyt
 - In the future this should ideally be automatically generated or all smart pointers returned should be automatically dereferenced and held on to by C# instead.
 - Enums are passed as int our uint in the Simplygon API requring type casting. Hopefully we can get this corrected in the SimplygonSDK.h header in the future.
 - Smart pointer types have no inheritance there needs to be explicit casting to reach a parent class. It's implemented using the Utils.SimplygonCast<> function.
+- Deinitialization of SimplygonSDK is currently not supported because it needs to be released after all references to any simplygon object and the C# garbage collector is non-deterministic. If this is important every Simplygon object need to be initiated in a using statement to guarantee it's released when it goes out of scope.
 
 ## Unity (C#)
 - The C# wrappers have been successfully run in the Unity 5.0 editor for 64bit and it should work on different versions and platforms.
