@@ -9,14 +9,21 @@ public class Utils
     public static T SimplygonCast<T>(object from, bool cMemoryOwn = false)
     {
         System.Reflection.MethodInfo CPtrGetter = from.GetType().GetMethod("getCPtr", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-        return CPtrGetter == null ? default(T) : (T)System.Activator.CreateInstance
-        (
+        if (CPtrGetter == null)
+        {
+            return default(T);
+        }
+        else
+        {
+            T res = (T)System.Activator.CreateInstance(
             typeof(T),
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance,
             null,
             new object[] { ((HandleRef)CPtrGetter.Invoke(null, new object[] { from })).Handle, cMemoryOwn },
-            null
-        );
+            null);
+            // TODO: Add IsA check using the Simplygon API call
+            return res;
+        }
     }
 
 }

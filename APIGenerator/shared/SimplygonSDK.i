@@ -65,7 +65,7 @@ namespace SimplygonSDK {
 
 #if defined(SWIGCSHARP)
 	// Csharp speficic stuff
-	/*class error_handler : public SimplygonSDK::rerrorhandler
+	class error_handler : public SimplygonSDK::rerrorhandler
 	{
 	public:
 		virtual void HandleError(
@@ -83,13 +83,13 @@ namespace SimplygonSDK {
 			sprintf_s(tmp, 1024, "%s\tMethod: %s\n", tmp, methodname);
 			sprintf_s(tmp, 1024, "%s\tError Type: %d\n", tmp, errortype);
 			sprintf_s(tmp, 1024, "%s\tError Description: %s\n", tmp, errortext);
-			PyErr_SetString(PyExc_ValueError,tmp);
+			fprintf(stderr,tmp);
 		}
-	} eh;*/
+	} eh;
 
 	extern void InitErrorhandling()
 	{
-		//GetSDK()->SetErrorHandler(&eh);
+		GetSDK()->SetErrorHandler(&eh);
 	}
 }
 #endif // defined(SWIGCSHARP)
