@@ -18,6 +18,7 @@ This project generates a API that makes the Simplygon API accessible through pyt
 - Either you add them to the System path or you adjust the project file so that it points to the correct locations
 
 ## Getting started (Python)
+- Set PYTHONPATH system variable to the root folder of Python.
 - If you want to be able to build a debug version you need to compile python in debug mode and link to pythonXX_d.lib
 - Right click SimplygonSDK.i and choose compile. This will generate the wrapper file.
 - Compile the solution. This will generate _SimplygonSDK.pyd file and copy that and SimplygonSDK.py and copy both to the examples folder.
