@@ -44,10 +44,14 @@ def main():
     Utils.GetSDK().SetGlobalSetting( "DefaultTBNType" , SDK.SG_TANGENTSPACEMETHOD_ORTHONORMAL );
 
     currentDir = os.path.dirname(os.path.realpath(__file__))+"/"
+    writeToDirectory = currentDir + "Output"
+    if not os.path.exists(writeToDirectory):
+        os.makedirs(writeToDirectory)
+
     # Run HQ reduction example, reducing a single geometry to a single LOD
     print("Running HQ reduction... ");
     
-    RunHighQualityReduction(currentDir+"../Assets/SimplygonMan.obj", currentDir+"Output/SimplygonMan_Rebaked_Materials_LOD" );
+    RunHighQualityReduction(currentDir+"../Assets/SimplygonMan.obj",writeToDirectory+"/SimplygonMan_Quality_LOD" );
     print("Done.\n");
     # Run reduction example that bakes all input materials into a single output material
     print("Running reduction with material baking... ");

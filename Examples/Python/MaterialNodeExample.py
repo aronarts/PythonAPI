@@ -43,6 +43,7 @@ import sys
 assetsPath = os.path.dirname(os.path.realpath(__file__))+"\\..\\Assets\\MaterialNodeExampleAssets\\"
 
 def main( ):
+    
     Utils.InitExample()
     SDK.InitErrorhandling();
 
@@ -285,6 +286,8 @@ def CreateIslandMaterialNodeNetwork():
 def RunExample( readFrom ):
     sdk = Utils.GetSDK()
     writeToDirectory = os.path.dirname(os.path.realpath(__file__))+"/output/";
+    if not os.path.exists(writeToDirectory):
+        os.makedirs(writeToDirectory)
     output_geometry_filename = writeToDirectory+"materialnodeexample.obj";
     output_diffuse_filename = writeToDirectory+"materialnodeexampl_diffuse.png";
     # Load object from file
