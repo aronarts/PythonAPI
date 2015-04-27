@@ -331,7 +331,6 @@
     <Compile Include="swig\SWIGTYPE_p_double.cs" />
     <Compile Include="swig\SWIGTYPE_p_float.cs" />
     <Compile Include="swig\SWIGTYPE_p_int.cs" />
-    <Compile Include="swig\SWIGTYPE_p_intptr_t.cs" />
     <Compile Include="swig\SWIGTYPE_p_long.cs" />
     <Compile Include="swig\SWIGTYPE_p_p_void.cs" />
     <Compile Include="swig\SWIGTYPE_p_short.cs" />
