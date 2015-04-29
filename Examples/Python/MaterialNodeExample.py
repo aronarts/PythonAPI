@@ -439,26 +439,26 @@ def RunExample( readFrom ):
     #
 
     # Create a DirectX renderer
-    renderer = sdk.CreateDirectXRenderer();
+    #renderer = sdk.CreateDirectXRenderer();
 
     # Setup the previewer with the window dimensions
-    renderer.CreatePreviewer( 2048, 2048 );
+    #renderer.CreatePreviewer( 2048, 2048 );
 
     # Will take the first ( and in this case ONLY ) geometry in the scene
     # and load it into the renderer
-    for i in range(0, scene.GetRootNode().GetChildCount()):
-        mesh = scene.GetRootNode().GetChild( i ) ;
-        if( mesh.GetClass() != "ISceneMesh" ):
-            continue;
+    #for i in range(0, scene.GetRootNode().GetChildCount()):
+    #    mesh = scene.GetRootNode().GetChild( i ) ;
+    #    if( mesh.GetClass() != "ISceneMesh" ):
+    #        continue;
 
-        sceneMesh = mesh.AsSceneMesh()
-        geom = sceneMesh.GetGeometry();
+    #   sceneMesh = mesh.AsSceneMesh()
+    #   geom = sceneMesh.GetGeometry();
 
         # Send the geometry and the material table into the renderer
         # Make sure the material table has materials that have a material 
         # node network attached to it
-        renderer.LoadGeometryDataWithMaterialShadingNetwork( geom, scene.GetMaterialTable() );
-        break;
+    #    renderer.LoadGeometryDataWithMaterialShadingNetwork( geom, scene.GetMaterialTable() );
+    #    break;
 
     # Create a camera path for the renderer
     cam_path = sdk.CreateCameraPath();
@@ -544,7 +544,8 @@ def RunExample( readFrom ):
     cast.SetOutputChannelBitDepth( 8 ); # 8 bits per channel. So in this case we will have 24bit colors RGB.
     cast.SetDilation( 10 ); # To avoid mip-map artifacts, the empty pixels on the map needs to be filled to a degree as well.
     cast.SetOutputFilePath( output_diffuse_filename ); # Where the texture map will be saved to file.
-    cast.CastMaterials(); # Fetch!
+    print("Right now this example crashes in CastMaterials")
+    cast.CastMaterials(); # Fetch! ERROR: It gets stuck somewhere in this operation right now.
 
     # Set the material properties 
     # Set the diffuse multiplier for the texture. 1 means it will not differ from original texture
@@ -552,7 +553,7 @@ def RunExample( readFrom ):
 
     # Set material to point to the created texture filename.
     output_material.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_DIFFUSE , output_diffuse_filename );
-
+    print("hi3")
     objexp = sdk.CreateWavefrontExporter();
 
     objexp.SetExportFilePath( output_geometry_filename );
