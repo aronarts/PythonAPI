@@ -243,3 +243,5 @@ Examples/temp/*.sgscene
 Apigenerator/SimplygonSDKCLR/swig/*.cs
 *.pyc
 *.swatch
+#Asset folder
+Assets/*

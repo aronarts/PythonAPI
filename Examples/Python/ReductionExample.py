@@ -35,32 +35,33 @@ import math
 #
 #
 
+exampleName = "ReductionExample"
 
 def main():
     Utils.InitExample()
     SDK.InitErrorhandling();
+    Utils.MoveAsset("","simplygonman.mtl")
+    Utils.MoveAsset("","simplygonman.obj")
+    Utils.MoveAsset("","simplygonman_d.png")
+    Utils.MoveAsset("","simplygonman_n.png")
+    simplygonManPath = Utils.GetAssetPath("","SimplygonMan.obj")
     # Before any specific processing starts, set global variables. 
     # Using Orthonormal method for calculating tangentspace.
     Utils.GetSDK().SetGlobalSetting( "DefaultTBNType" , SDK.SG_TANGENTSPACEMETHOD_ORTHONORMAL );
 
-    currentDir = os.path.dirname(os.path.realpath(__file__))+"/"
-    writeToDirectory = currentDir + "Output"
-    if not os.path.exists(writeToDirectory):
-        os.makedirs(writeToDirectory)
-
     # Run HQ reduction example, reducing a single geometry to a single LOD
     print("Running HQ reduction... ");
     
-    RunHighQualityReduction(currentDir+"../Assets/SimplygonMan.obj",writeToDirectory+"/SimplygonMan_Quality_LOD" );
+    RunHighQualityReduction(simplygonManPath,Utils.GetOutputPath(exampleName,"SimplygonMan_Quality_LOD"));
     print("Done.\n");
     # Run reduction example that bakes all input materials into a single output material
     print("Running reduction with material baking... ");
-    RunReductionWithTextureCasting(currentDir, "../Assets/SimplygonMan.obj", "Output/SimplygonMan_Rebaked_Materials_LOD" );
+    RunReductionWithTextureCasting(simplygonManPath, Utils.GetOutputPath(exampleName,"SimplygonMan_Rebaked_Materials_LOD") );
     print("Done.\n");
 
     # Run a cascaded LOD chain generation
     print("Running cascaded LOD chain reduction... ");
-    RunCascadedLodChainReduction(currentDir, "../Assets/SimplygonMan.obj", "Output/SimplygonMan_Cascade_LOD1", "Output/SimplygonMan_Cascade_LOD2", "Output/SimplygonMan_Cascade_LOD3" );
+    RunCascadedLodChainReduction(simplygonManPath, Utils.GetOutputPath(exampleName,"SimplygonMan_Cascade_LOD1"), Utils.GetOutputPath(exampleName,"SimplygonMan_Cascade_LOD2"), Utils.GetOutputPath(exampleName,"SimplygonMan_Cascade_LOD3"));
     print("Done.\n");
 
     # Done!
@@ -151,12 +152,12 @@ def RunHighQualityReduction(readFrom, writeTo):
     #Done! LOD created.
 
 
-def RunReductionWithTextureCasting(currentDir, readFrom, writeTo):
+def RunReductionWithTextureCasting(readFrom, writeTo):
     # Load input geometry from file
     sdk = Utils.GetSDK()
     objReader = sdk.CreateWavefrontImporter();
     objReader.SetExtractGroups(False); #This makes the .obj reader import into a single geometry object instead of multiple
-    objReader.SetImportFilePath(currentDir+readFrom);
+    objReader.SetImportFilePath(readFrom);
     if( not objReader.RunImport() ):
         return;
 
@@ -242,17 +243,21 @@ def RunReductionWithTextureCasting(currentDir, readFrom, writeTo):
 
     colorCaster.SetColorType( SDK.cvar.SG_MATERIAL_CHANNEL_DIFFUSE ); 
     colorCaster.SetOutputChannels( 3 ); #RGB, 3 channels! (1 would be for grey scale, and 4 would be for RGBA.)
-    colorCaster.SetOutputFilePath( currentDir+"output/combinedDiffuseMap.png" ); #Where the texture map will be saved to file.
+    diffusePath = Utils.GetOutputPath(exampleName, "combinedDiffuseMap.png" )
+    colorCaster.SetOutputFilePath( diffusePath ); #Where the texture map will be saved to file.
+    
     colorCaster.CastMaterials(); #Do the actual casting and write to texture.
 
     colorCaster.SetColorType( SDK.cvar.SG_MATERIAL_CHANNEL_SPECULAR ); 
     colorCaster.SetOutputChannels( 4 ); #RGBA, 4 channels! Stores spec power in A
-    colorCaster.SetOutputFilePath( currentDir+"output/combinedSpecularMap.png" ); #Where the texture map will be saved to file.
+    specPath = Utils.GetOutputPath(exampleName, "combinedSpecularMap.png" )
+    colorCaster.SetOutputFilePath( specPath ); #Where the texture map will be saved to file.
+    
     colorCaster.CastMaterials(); #Do the actual casting and write to texture.
 
 
-    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_DIFFUSE , currentDir+"output/combinedDiffuseMap.png" ); #Set material to point to the texture we cast to above
-    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_SPECULAR , currentDir+"output/combinedSpecularMap.png" ); #Set material to point to the texture we cast to above
+    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_DIFFUSE , diffusePath); #Set material to point 5to the texture we cast to above
+    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_SPECULAR , specPath); #Set material to point to the texture we cast to above
     
 
     # Cast normal map texture data with the normal caster. This also compensates for any geometric errors that have appeared in the reduction process.
@@ -263,13 +268,14 @@ def RunReductionWithTextureCasting(currentDir, readFrom, writeTo):
     normalCaster.SetOutputChannels( 3 ); # RGB, 3 channels! (But really the x, y and z values for the normal)
     normalCaster.SetOutputChannelBitDepth( 8 ); 
     normalCaster.SetDilation( 10 );
-    normalCaster.SetOutputFilePath( currentDir+"output/combinedNormalMap.png" );
+    normalPath = Utils.GetOutputPath(exampleName, "combinedNormalMap.png" )
+    normalCaster.SetOutputFilePath( normalPath );
     normalCaster.SetFlipBackfacingNormals( True );
     normalCaster.SetGenerateTangentSpaceNormals( True );
     normalCaster.CastMaterials();
 
     # Set normal map of the created material to point to the combined normal map
-    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_NORMALS , currentDir+"output/combinedNormalMap.png" );
+    lodMaterial.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_NORMALS , normalPath);
 
     # END CASTING
     ###############################################/
@@ -292,12 +298,12 @@ def RunReductionWithTextureCasting(currentDir, readFrom, writeTo):
     #Done! LOD and material created.
 
 
-def RunCascadedLodChainReduction(currentDir, readFrom, writeToLod1, writeToLod2, writeToLod3):
+def RunCascadedLodChainReduction(readFrom, writeToLod1, writeToLod2, writeToLod3):
     # Load input geometry from file
     sdk = Utils.GetSDK()
     objReader = sdk.CreateWavefrontImporter();
     objReader.SetExtractGroups(False); #This makes the .obj reader import into a single geometry object instead of multiple
-    objReader.SetImportFilePath(currentDir+readFrom);
+    objReader.SetImportFilePath(readFrom);
     if( not objReader.RunImport() ):
         return;
 
@@ -352,7 +358,7 @@ def RunCascadedLodChainReduction(currentDir, readFrom, writeToLod1, writeToLod2,
         geometryDiagonalLength / 50] #Gives a deviation of max 1 pixel at ~50 pixels on-screen
     
     #Generate the output filenames
-    outputGeomFilename = [currentDir+writeToLod1, currentDir+writeToLod2, currentDir+writeToLod3]
+    outputGeomFilename = [writeToLod1, writeToLod2, writeToLod3]
 
     # Run the iterative processing, saving the output geometry after every process
     for reductionIteration in range(0,3):

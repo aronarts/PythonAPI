@@ -40,19 +40,27 @@ import sys
 #	perform material casting.
 #
 #####################################
-assetsPath = os.path.dirname(os.path.realpath(__file__))+"\\..\\Assets\\MaterialNodeExampleAssets\\"
 
+exampleName = "MaterialNodeExample"
 def main( ):
     
     Utils.InitExample()
     SDK.InitErrorhandling();
+    Utils.MoveAsset("MaterialNodeExampleAssets","dirt.jpg")
+    Utils.MoveAsset("MaterialNodeExampleAssets","grass.jpg")
+    Utils.MoveAsset("MaterialNodeExampleAssets","rock.jpg")
+    Utils.MoveAsset("MaterialNodeExampleAssets","island.obj")
+    Utils.MoveAsset("MaterialNodeExampleAssets","ice.png")
+    Utils.MoveAsset("MaterialNodeExampleAssets","icemask.png")
+    Utils.MoveAsset("MaterialNodeExampleAssets","noise.png")
+    Utils.MoveAsset("MaterialNodeExampleAssets","water.png")
 
     # Set global variable. Using Orthonormal method for calculating
     # tangentspace.
     Utils.GetSDK().SetGlobalSetting( "DefaultTBNType" , SDK.SG_TANGENTSPACEMETHOD_ORTHONORMAL );
 
     # Run the example code
-    RunExample(assetsPath+"island.obj");
+    RunExample(Utils.GetAssetPath("MaterialNodeExampleAssets", "island.obj"));
 
     Utils.DeinitExample();
 
@@ -76,7 +84,9 @@ def SetupTexcoordLevels( newGeom ):
 
 # Compute vertex colors from the model that will be used to interpolate between textures
 # and other nodes
-def ComputeVertexColors( newGeom ): 
+def ComputeVertexColors( newGeom ):
+    print("Computing vertex colors")
+
     threshold_water = 0.01; # At what height the water should end
     threshold_grass = 0.3; # At what height the grass should end
     threshold_dirt = 0.5; # At what height the dirt should end
@@ -163,9 +173,9 @@ def CreateMountainNode():
     node_texture_rock.SetTexCoordSet( level_1 );
     
 
-    node_texture_icemask.SetTextureName( assetsPath+"icemask.png" );
-    node_texture_ice.SetTextureName( assetsPath+"ice.png" );
-    node_texture_rock.SetTextureName( assetsPath+"rock.jpg" );
+    node_texture_icemask.SetTextureName( Utils.GetAssetPath("MaterialNodeExampleAssets", "icemask.png") );
+    node_texture_ice.SetTextureName( Utils.GetAssetPath("MaterialNodeExampleAssets", "ice.png") );
+    node_texture_rock.SetTextureName( Utils.GetAssetPath("MaterialNodeExampleAssets", "rock.jpg") );
 
     # Create a vertex color node that will link to the 0:th vertex color index
     node_weights_relative_height = sdk.CreateShadingVertexColorNode();
@@ -212,8 +222,8 @@ def CreateWaterNode():
     node_texture_water.SetTexCoordSet( level_1 );
     node_texture_noise.SetTexCoordSet( level_1 );
 
-    node_texture_water.SetTextureName( assetsPath+"water.png" );
-    node_texture_noise.SetTextureName( assetsPath+"noise.png" );
+    node_texture_water.SetTextureName( Utils.GetAssetPath("MaterialNodeExampleAssets", "water.png") );
+    node_texture_noise.SetTextureName( Utils.GetAssetPath("MaterialNodeExampleAssets", "noise.png") );
 
     # Create a color node which will simply be a static color
     node_color_water = sdk.CreateShadingColorNode();
@@ -232,7 +242,8 @@ def CreateWaterNode():
 # to create a material for an island model
 # It uses multiple textures with different uv sets
 # and blends nodes using vertex colors and textures
-def CreateIslandMaterialNodeNetwork(): 
+def CreateIslandMaterialNodeNetwork():
+    print("Creating shading network")
     # Create the mountain node
     node_mountain = CreateMountainNode();
 
@@ -285,11 +296,9 @@ def CreateIslandMaterialNodeNetwork():
 
 def RunExample( readFrom ):
     sdk = Utils.GetSDK()
-    writeToDirectory = os.path.dirname(os.path.realpath(__file__))+"/output/";
-    if not os.path.exists(writeToDirectory):
-        os.makedirs(writeToDirectory)
-    output_geometry_filename = writeToDirectory+"materialnodeexample.obj";
-    output_diffuse_filename = writeToDirectory+"materialnodeexampl_diffuse.png";
+
+    output_geometry_filename = Utils.GetOutputPath(exampleName, "materialnodeexample.obj");
+    output_diffuse_filename = Utils.GetOutputPath(exampleName, "materialnodeexampl_diffuse.png");
     # Load object from file
     objReader = sdk.CreateWavefrontImporter();
     objReader.SetImportFilePath(readFrom);
@@ -330,13 +339,13 @@ def RunExample( readFrom ):
     texture_table = scene.GetTextureTable();
 
     Texs = [
-            assetsPath+"dirt.jpg",
-            assetsPath+"grass.jpg",
-            assetsPath+"water.png",
-            assetsPath+"noise.png",
-            assetsPath+"icemask.png",
-            assetsPath+"ice.png",
-            assetsPath+"rock.jpg"
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "dirt.jpg"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "grass.jpg"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "water.png"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "noise.png"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "icemask.png"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "ice.png"),
+            Utils.GetAssetPath("MaterialNodeExampleAssets", "rock.jpg")
             ];
 
     for i in range(0,len(Texs)):
@@ -354,11 +363,11 @@ def RunExample( readFrom ):
     # Try saving the scene to file, and reload it
     #island_material.PrintInfo();
 
-    scene.SaveToFile(writeToDirectory+"testscene.scene");
+    scene.SaveToFile(Utils.GetOutputPath(exampleName, "testscene.scene"));
 
     # delete and reload
     scene = sdk.CreateScene();
-    scene.LoadFromFile(writeToDirectory+"testscene.scene");
+    scene.LoadFromFile(Utils.GetOutputPath(exampleName, "testscene.scene"));
 
     #island_material.PrintInfo();
 
@@ -410,13 +419,13 @@ def RunExample( readFrom ):
     glsl_fragment_code = island_shader.GetGLSLFragmentCode();
 
     #Store the shaders to file in the current folder 
-    file_hlsl = open( writeToDirectory+"shader_hlsl.txt", "wt" );
+    file_hlsl = open( Utils.GetOutputPath(exampleName, "shader_hlsl.txt"), "wt" );
     file_hlsl.write( hlsl_code.GetText() );
     file_hlsl.close();
-    file_glsl_vertex = open( writeToDirectory+"shader_glsl_vertex.txt", "wt" );
+    file_glsl_vertex = open( Utils.GetOutputPath(exampleName, "shader_glsl_vertex.txt"), "wt" );
     file_glsl_vertex.write(glsl_vertex_code.GetText() );
     file_glsl_vertex.close();
-    file_glsl_fragment = open( writeToDirectory+"shader_glsl_fragment.txt", "wt" );
+    file_glsl_fragment = open( Utils.GetOutputPath(exampleName, "shader_glsl_fragment.txt"), "wt" );
     file_glsl_fragment.write(glsl_fragment_code.GetText() );
     file_glsl_fragment.close();
 
@@ -518,6 +527,7 @@ def RunExample( readFrom ):
     mapping_settings.SetMultisamplingLevel( 2 );
 
     # Run the reduction
+    print("Reducing geometry")
     red.RunProcessing();
 
     # Mapping image is needed for texture casting.
@@ -553,7 +563,6 @@ def RunExample( readFrom ):
 
     # Set material to point to the created texture filename.
     output_material.SetTexture( SDK.cvar.SG_MATERIAL_CHANNEL_DIFFUSE , output_diffuse_filename );
-    print("hi3")
     objexp = sdk.CreateWavefrontExporter();
 
     objexp.SetExportFilePath( output_geometry_filename );

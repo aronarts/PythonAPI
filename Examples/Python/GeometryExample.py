@@ -2,14 +2,19 @@ import SimplygonSDK as SDK
 import SimplygonUtils as Utils
 import os
 
+exampleName = "GeometryExample"
+
 def main():
     Utils.InitExample()
     SDK.InitErrorhandling();
     # Run the example code
+    print ("Generating example 1")
     RunExample1();
+    print ("Generating example 2")
     RunExample2();
+    print ("Generating example 3")
     RunExample3();
-	
+    print ("Done")
     Utils.DeinitExample();
 
 def RunExample1():
@@ -103,7 +108,7 @@ def RunExample1():
     objexp = Utils.GetSDK().CreateWavefrontExporter();
 
 
-    outputPath = os.path.dirname(os.path.realpath(__file__)) + "/output/Quad.obj";
+    outputPath = Utils.GetOutputPath(exampleName, "Quad.obj")
     objexp.SetExportFilePath( outputPath );
     objexp.SetSingleGeometry( geom );
     objexp.RunExport();
@@ -179,7 +184,7 @@ def RunExample2():
     # Setup the Exporter for storing the reduced mesh to file
     objexp = Utils.GetSDK().CreateWavefrontExporter()
 
-    outputPath = os.path.dirname(os.path.realpath(__file__)) + "/output/Quad2.obj";
+    outputPath = Utils.GetOutputPath(exampleName, "Quad2.obj");
     objexp.SetExportFilePath( outputPath );
     objexp.SetSingleGeometry( geom );
     objexp.RunExport();
@@ -265,7 +270,7 @@ def RunExample3():
     # Setup the Exporter for storing the reduced mesh to file
     objexp = Utils.GetSDK().CreateWavefrontExporter()
 
-    outputPath = os.path.dirname(os.path.realpath(__file__)) + "/output/Quad3.obj";
+    outputPath = Utils.GetOutputPath(exampleName, "Quad3.obj");
     objexp.SetExportFilePath( outputPath );
     objexp.SetSingleGeometry( geom.NewUnpackedCopy() );
     objexp.RunExport();
