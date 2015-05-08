@@ -37,7 +37,8 @@ namespace RemeshingExample
 
         static bool run_remeshing_for_lod(ISimplygonSDK sdk, int lod_index, uint merge_distance)
         {
-            string assetRoot = @"../../../../../Assets/";
+            string userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string assetRoot = userProfileDirectory + @"/Documents/SimplygonSDK/SourceCode/Assets/";
             string tempRoot = @"../../../../../temp/";
             string output_filename = string.Format(tempRoot + "wall_lod{0}_merge{1}.obj", lod_index + 1, merge_distance);
             string output_material_filename = string.Format(tempRoot + "wall_lod{0}_merge{1}.mtl", lod_index + 1, merge_distance); 

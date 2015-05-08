@@ -307,7 +307,8 @@ namespace BoneReductionExample
         }
         static void RunExampleRemoveBonesFromSimplygonScene(ISimplygonSDK sdk)
         {
-            string assetRoot = @"../../../../../Assets/RiggedSimplygonMan/";
+            string userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string assetRoot = userProfileDirectory + @"/Documents/SimplygonSDK/SourceCode/Assets/RiggedSimplygonMan/";
             string tempRoot = @"../../../../../temp/";
             spScene scene = sdk.CreateScene();
             if (!scene.LoadFromFile(assetRoot + "RiggedSimplygonMan.sgscene"))
