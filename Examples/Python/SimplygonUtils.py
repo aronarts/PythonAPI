@@ -13,7 +13,7 @@ def InitExample():
     SDK.AddSearchPath( "..\\..\\..\\Build\\")
     initval = SDK.Initialize()	
     if(initval != SDK.SG_ERROR_NOERROR):
-        exit_with_error("Failed to initialize: "+SDK.GetError(initVal))
+        exit_with_error("Failed to initialize: "+SDK.GetError(initval))
     print("Simplygon version: "+GetSDK().GetVersion()+" is loaded")
 
 
