@@ -35,7 +35,7 @@ This project generates a API that makes the Simplygon API accessible through pyt
 ## Install instructions (C#)
 - Install SWIG
 - Either add SWIG to the system path or update the visual studio project so it can be found
-- Install Simplygon 6.2.520. If you use a different version, make sure you overwrite SimplygonSDK.h with the one from the Simplygon install directory
+- Install Simplygon 6.2.941. If you use a different version, make sure you overwrite SimplygonSDK.h with the one from the Simplygon install directory
 - Install your Simplygon License
 - Unpack the source code package by running ExampleSources.exe in %USERPROFILE%\documents\SimplygonSDK if you want the examples using asset files
 

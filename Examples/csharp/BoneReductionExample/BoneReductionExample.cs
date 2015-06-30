@@ -13,7 +13,10 @@ namespace BoneReductionExample
         {
             // init SDK
             ISimplygonSDK sdk = Example.Example.InitExample();
-
+            if (sdk == null)
+            {
+                return;
+            }
             //MoveDirToExecutablePath(_T("RiggedSimplygonMan"), _T(""));
 
             // Run the example code

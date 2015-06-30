@@ -26,6 +26,10 @@ namespace GeometryExample
                 return;
             }
             ISimplygonSDK sdk = SimplygonSDK.GetSDK();
+            if (sdk == null)
+            {
+                return;
+            }
             Console.WriteLine("Simplygon version: " + sdk.GetVersion());
             RunHighQualityReduction(sdk, @"c:\temp\out");
         }
