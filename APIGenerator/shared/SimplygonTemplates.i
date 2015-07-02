@@ -5,8 +5,7 @@
 %template(spBoneSettings) SimplygonSDK::CountedPointer<IBoneSettings >;
 %template(spBoolArray) SimplygonSDK::CountedPointer<IBoolArray >;
 %template(spBoolData) SimplygonSDK::CountedPointer<IBoolData >;
-%template(spCamera) SimplygonSDK::CountedPointer<ICamera >;
-%template(spCameraPath) SimplygonSDK::CountedPointer<ICameraPath >;
+%template(spSceneCamera) SimplygonSDK::CountedPointer<ISceneCamera >;
 %template(spCharArray) SimplygonSDK::CountedPointer<ICharArray >;
 %template(spCharData) SimplygonSDK::CountedPointer<ICharData >;
 %template(spChartAggregator) SimplygonSDK::CountedPointer<IChartAggregator >;
@@ -21,8 +20,6 @@
 %template(spFloatData) SimplygonSDK::CountedPointer<IFloatData >;
 %template(spGeometryData) SimplygonSDK::CountedPointer<IGeometryData >;
 %template(spGeometryDataCollection) SimplygonSDK::CountedPointer<IGeometryDataCollection >;
-%template(spGeometryGroup) SimplygonSDK::CountedPointer<IGeometryGroup >;
-%template(spGeometryTangentCalculator) SimplygonSDK::CountedPointer<IGeometryTangentCalculator >;
 %template(spGeometryValidator) SimplygonSDK::CountedPointer<IGeometryValidator >;
 %template(spGraphicsExporter) SimplygonSDK::CountedPointer<IGraphicsExporter >;
 %template(spGraphicsImporter) SimplygonSDK::CountedPointer<IGraphicsImporter >;
@@ -61,8 +58,6 @@
 %template(spRidArray) SimplygonSDK::CountedPointer<IRidArray >;
 %template(spRidData) SimplygonSDK::CountedPointer<IRidData >;
 %template(spScene) SimplygonSDK::CountedPointer<IScene >;
-%template(spSceneAggregator) SimplygonSDK::CountedPointer<ISceneAggregator >;
-%template(spSceneAggregatorSettings) SimplygonSDK::CountedPointer<ISceneAggregatorSettings >;
 %template(spSceneBone) SimplygonSDK::CountedPointer<ISceneBone >;
 %template(spSceneBoneTable) SimplygonSDK::CountedPointer<ISceneBoneTable >;
 %template(spSceneLodGroup) SimplygonSDK::CountedPointer<ISceneLodGroup >;
@@ -70,7 +65,6 @@
 %template(spSceneNode) SimplygonSDK::CountedPointer<ISceneNode >;
 %template(spSceneNodeCollection) SimplygonSDK::CountedPointer<ISceneNodeCollection >;
 %template(spSettingsObject) SimplygonSDK::CountedPointer<ISettingsObject >;
-%template(spShaderData) SimplygonSDK::CountedPointer<IShaderData >;
 %template(spShadingAddNode) SimplygonSDK::CountedPointer<IShadingAddNode >;
 %template(spShadingClampNode) SimplygonSDK::CountedPointer<IShadingClampNode >;
 %template(spShadingColorNode) SimplygonSDK::CountedPointer<IShadingColorNode >;
@@ -113,6 +107,19 @@
 %template(spShadingMaxNode) SimplygonSDK::CountedPointer<IShadingMaxNode>;
 %template(spNormalAnalyzer) SimplygonSDK::CountedPointer<INormalAnalyzer>;
 %template(spImageDataExporter) SimplygonSDK::CountedPointer<IImageDataExporter>;
-%template(spGeometryAnalyzer) SimplygonSDK::CountedPointer<IGeometryAnalyzer>;
 %template(spUVAnalyzer) SimplygonSDK::CountedPointer<IUVAnalyzer>;
+%template(spAggregationProcessor) SimplygonSDK::CountedPointer<IAggregationProcessor>;
+%template(spAggregationSettings) SimplygonSDK::CountedPointer<IAggregationSettings>;
+%template(spAmbientOcclusionCaster) SimplygonSDK::CountedPointer<IAmbientOcclusionCaster>;
+%template(spMaterialReplacer) SimplygonSDK::CountedPointer<IMaterialReplacer>;
+%template(spObject) SimplygonSDK::CountedPointer<IObject>;
+%template(spOcclusionMeshProcessor) SimplygonSDK::CountedPointer<IOcclusionMeshProcessor>;
+%template(spOcclusionMeshSettings) SimplygonSDK::CountedPointer<IOcclusionMeshSettings>;
+%template(spPartRemover) SimplygonSDK::CountedPointer<IPartRemover>;
+%template(spScenePlane) SimplygonSDK::CountedPointer<IScenePlane>;
+%template(spSelectionSet) SimplygonSDK::CountedPointer<ISelectionSet>;
+%template(spSelectionSetTable) SimplygonSDK::CountedPointer<ISelectionSetTable>;
+%template(spShaderGenerator) SimplygonSDK::CountedPointer<IShaderGenerator>;
+%template(spTangentCalculator) SimplygonSDK::CountedPointer<ITangentCalculator>;
+%template(spWelder) SimplygonSDK::CountedPointer<IWelder>;
 

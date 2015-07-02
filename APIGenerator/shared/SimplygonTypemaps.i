@@ -115,14 +115,9 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spBoolData)
   EndAllowedTypes()
 }
-%typemap(in) SimplygonSDK::ICamera * {
+%typemap(in) SimplygonSDK::ISceneCamera * {
   BeginAllowedTypes()
-  AllowedType(spCamera)
-  EndAllowedTypes()
-}
-%typemap(in) SimplygonSDK::ICameraPath * {
-  BeginAllowedTypes()
-  AllowedType(spCameraPath)
+  AllowedType(spSceneCamera)
   EndAllowedTypes()
 }
 %typemap(in) SimplygonSDK::ICharArray * {
@@ -639,6 +634,11 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
 %typemap(in) SimplygonSDK::IImpostorSettings * {
   BeginAllowedTypes()
   AllowedType(spImpostorSettings)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IAggregationProcessor * {
+  BeginAllowedTypes()
+  AllowedType(spAggregationProcessor)
   EndAllowedTypes()
 }
 #endif // defined(SWIGPYTHON)

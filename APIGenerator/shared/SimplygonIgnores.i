@@ -8,8 +8,7 @@
 %ignore *::operator SimplygonSDK::IBoneSettings*;
 %ignore *::operator SimplygonSDK::IBoolArray*;
 %ignore *::operator SimplygonSDK::IBoolData*;
-%ignore *::operator SimplygonSDK::ICamera*;
-%ignore *::operator SimplygonSDK::ICameraPath*;
+%ignore *::operator SimplygonSDK::ISceneCamera*;
 %ignore *::operator SimplygonSDK::ICharArray*;
 %ignore *::operator SimplygonSDK::ICharData*;
 %ignore *::operator SimplygonSDK::IChartAggregator*;
@@ -24,8 +23,6 @@
 %ignore *::operator SimplygonSDK::IFloatData*;
 %ignore *::operator SimplygonSDK::IGeometryData*;
 %ignore *::operator SimplygonSDK::IGeometryDataCollection*;
-%ignore *::operator SimplygonSDK::IGeometryGroup*;
-%ignore *::operator SimplygonSDK::IGeometryTangentCalculator*;
 %ignore *::operator SimplygonSDK::IGeometryValidator*;
 %ignore *::operator SimplygonSDK::IGraphicsExporter*;
 %ignore *::operator SimplygonSDK::IGraphicsImporter*;
@@ -64,8 +61,6 @@
 %ignore *::operator SimplygonSDK::IRidArray*;
 %ignore *::operator SimplygonSDK::IRidData*;
 %ignore *::operator SimplygonSDK::IScene*;
-%ignore *::operator SimplygonSDK::ISceneAggregator*;
-%ignore *::operator SimplygonSDK::ISceneAggregatorSettings*;
 %ignore *::operator SimplygonSDK::ISceneBone*;
 %ignore *::operator SimplygonSDK::ISceneBoneTable*;
 %ignore *::operator SimplygonSDK::ISceneLodGroup*;
@@ -73,7 +68,6 @@
 %ignore *::operator SimplygonSDK::ISceneNode*;
 %ignore *::operator SimplygonSDK::ISceneNodeCollection*;
 %ignore *::operator SimplygonSDK::ISettingsObject*;
-%ignore *::operator SimplygonSDK::IShaderData*;
 %ignore *::operator SimplygonSDK::IShadingAddNode*;
 %ignore *::operator SimplygonSDK::IShadingClampNode*;
 %ignore *::operator SimplygonSDK::IShadingColorNode*;
@@ -116,8 +110,25 @@
 %ignore *::operator SimplygonSDK::IShadingMaxNode*;
 %ignore *::operator SimplygonSDK::INormalAnalyzer*;
 %ignore *::operator SimplygonSDK::IImageDataExporter*;
-%ignore *::operator SimplygonSDK::IGeometryAnalyzer*;
 %ignore *::operator SimplygonSDK::IUVAnalyzer*;
+
+%ignore *::operator SimplygonSDK::IAggregationProcessor*;
+%ignore *::operator SimplygonSDK::IAggregationSettings*;
+%ignore *::operator SimplygonSDK::IAmbientOcclusionCaster*;
+%ignore *::operator SimplygonSDK::IMaterialReplacer*;
+%ignore *::operator SimplygonSDK::IObject*;
+%ignore *::operator SimplygonSDK::IOcclusionMeshProcessor*;
+%ignore *::operator SimplygonSDK::IOcclusionMeshSettings*;
+%ignore *::operator SimplygonSDK::IPartRemover*;
+%ignore *::operator SimplygonSDK::ISceneCamera*;
+%ignore *::operator SimplygonSDK::IScenePlane*;
+%ignore *::operator SimplygonSDK::ISelectionSet*;
+%ignore *::operator SimplygonSDK::ISelectionSetTable*;
+%ignore *::operator SimplygonSDK::IShaderGenerator*;
+%ignore *::operator SimplygonSDK::ITangentCalculator*;
+%ignore *::operator SimplygonSDK::IWelder*;
+
+%ignore *::operator SimplygonSDK::IGeometryGroup*;
 
 #if defined(SWIGPYTHON)
 // Don't generate api classes for python for the interfaces, only for the smart pointers. Keeps the size down.
