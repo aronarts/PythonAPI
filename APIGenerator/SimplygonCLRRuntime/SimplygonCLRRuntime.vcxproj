@@ -141,9 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\shared\SimplygonExtensions.i" />
     <None Include="..\shared\SimplygonIgnores.i" />
     <None Include="..\shared\SimplygonLoader.i" />

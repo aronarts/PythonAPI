@@ -94,7 +94,7 @@ namespace GeometryExample
                 //auto meshTransform = meshNode->GetRelativeTransform();
                 //meshTransform->SetToTranslationTransform(100, 0, 0);
                 root.AddChild(meshNode);
-                reductionProcessor.SetSceneRoot(root);
+                reductionProcessor.SetScene(scene);
 
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,8 +113,8 @@ namespace GeometryExample
                 //reductionSettings.SetShadingImportance(2.f); //This would make the shading twice as important to the reducer as the other features./
 
                 // The actual reduction triangle target are controlled by these settings
-                reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_EITHER_IS_REACHED);//The reduction stops when any of the targets below is reached
-                reductionSettings.SetReductionRatio(0.5f); //Targets at 50% of the original triangle count
+                reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_ANY);//The reduction stops when any of the targets below is reached
+                reductionSettings.SetTriangleRatio(0.5f); //Targets at 50% of the original triangle count
                 reductionSettings.SetMaxDeviation(float.MaxValue); //Targets when an error of the specified size has been reached. As set here it never happens.
 
                 // The repair settings object contains settings to fix the geometries
@@ -142,12 +142,11 @@ namespace GeometryExample
 
                     // Generate the output filenames
                     string outputGeomFilename = writeTo + ".obj";
-                    spSceneMesh topmesh = Utils.SimplygonCast<spSceneMesh>(scene.GetRootNode().GetChild(0), false);
-		            
+        
 
                     // Do the actual exporting
                     objExporter.SetExportFilePath(outputGeomFilename);
-                    objExporter.SetSingleGeometry(topmesh.GetGeometry()); //This is the geometry we set as the processing geom of the reducer, retaining the materials in the original scene
+                    objExporter.SetScene(scene); //This is the geometry we set as the processing geom of the reducer, retaining the materials in the original scene
                     objExporter.RunExport();
 
                     //Done! LOD created.

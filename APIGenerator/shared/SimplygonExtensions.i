@@ -149,6 +149,11 @@
 		return d.__deref__();
 	}
 %}
+%typemap(cscode) SimplygonSDK::IScene %{
+	public static implicit operator IScene(spScene d) {
+		return d.__deref__();
+	}
+%}
 %typemap(cscode) SimplygonSDK::IMaterialTable %{
 	public static implicit operator IMaterialTable(spMaterialTable d) {
 		return d.__deref__();

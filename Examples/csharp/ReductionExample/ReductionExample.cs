@@ -22,9 +22,9 @@ namespace ReductionExample
             Console.WriteLine("Running HQ Reduction");
             RunHighQualityReduction(sdk, assetRoot + "SimplygonMan.obj", tempRoot + "SimplygonMan_HQ_LOD");
             Console.WriteLine("Running Material Reduction");
-            RunReductionWithTextureCasting(sdk, assetRoot + "SimplygonMan.obj", "SimplygonMan_Rebaked_Materials_LOD");
+            RunReductionWithTextureCasting(sdk, assetRoot + "SimplygonMan.obj", tempRoot + "SimplygonMan_Rebaked_Materials_LOD");
             Console.WriteLine("Running Cascaded LOD Reduction");
-            RunCascadedLodChainReduction(sdk, assetRoot + "SimplygonMan.obj", "SimplygonMan_Cascade_LOD1", "SimplygonMan_Cascade_LOD2", "SimplygonMan_Cascade_LOD3");
+            RunCascadedLodChainReduction(sdk, assetRoot + "SimplygonMan.obj", tempRoot + "SimplygonMan_Cascade_LOD1", tempRoot + "SimplygonMan_Cascade_LOD2", tempRoot + "SimplygonMan_Cascade_LOD3");
         }
         static void RunHighQualityReduction(ISimplygonSDK sdk, string readFrom, string writeTo)
         {
@@ -36,45 +36,36 @@ namespace ReductionExample
                 Console.WriteLine("Failed to read: " + readFrom);
                 return;
             }
-            spGeometryData originalGeom = objReader.GetFirstGeometry(); //Only contains a single geom, so "first" is fine
-            spMaterialTable originalMaterials = objReader.GetMaterials();
+            spScene originalScene = objReader.GetScene(); //Only contains a single geom, so "first" is fine
 
             //Create a copy of the original geometry on which we will run the reduction
-            spGeometryData lodGeom = originalGeom.NewCopy(true);
+            spScene lodScene = originalScene.NewCopy();
 
             // Create the reduction-processor, and set the geometry to reduce
             spReductionProcessor reductionProcessor = sdk.CreateReductionProcessor();
-            reductionProcessor.SetGeometry(lodGeom);
+            reductionProcessor.SetScene(lodScene);
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
             // SETTINGS - Most of these are set to the same value by default, but are set anyway for clarity
 
             // The reduction settings object contains settings pertaining to the actual decimation
             spReductionSettings reductionSettings = reductionProcessor.GetReductionSettings();
-            reductionSettings.SetEnablePreprocessing(true); //This enables the pre-processing block, which contains welding and t-junction removal
-            reductionSettings.SetEnablePostprocessing(true); //This enables the post-processing block, which contains normal recalculation and mapping image generation
             reductionSettings.SetKeepSymmetry(true); //Try, when possible to reduce symmetrically
             reductionSettings.SetUseAutomaticSymmetryDetection(true); //Auto-detect the symmetry plane, if one exists. Can, if required, be set manually instead.
             reductionSettings.SetUseHighQualityNormalCalculation(true); //Drastically increases the quality of the LODs normals, at the cost of extra processing time.
             reductionSettings.SetReductionHeuristics((uint)ReductionHeuristics.SG_REDUCTIONHEURISTICS_CONSISTENT); //Choose between "fast" and "consistent" processing. Fast will look as good, but may cause inconsistent 
-            //triangle counts when comparing MaxDeviation targets to the corresponding percentage targets.
 
-            // The reducer uses a feature flags mask to tell it what kind of borders to respect during reduction.
-            FeatureFlags featureFlagsMask = 0;
-            featureFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_GROUP; //Respect borders between group ids
-            featureFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_MATERIAL; //Respect borders between material ids
-            featureFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_TEXTURE0; //Respect discontinuities in the first texcoord field
-            featureFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_SHADING; //Respect hard shading borders
-            reductionSettings.SetFeatureFlags((uint)featureFlagsMask);
 
             // The reducer uses importance weights for all features to decide where and how to reduce.
             // These are advanced settings and should only be changed if you have some specific reduction requirement
             /*reductionSettings.SetShadingImportance(2.f); //This would make the shading twice as important to the reducer as the other features.*/
 
             // The actual reduction triangle target are controlled by these three settings
-            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_EITHER_IS_REACHED); //The reduction stops when either of the targets is reached
-            reductionSettings.SetReductionRatio(0.5f); //Stops at 50% of the original triangle count
+            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_ANY); //The reduction stops when either of the targets is reached
+            reductionSettings.SetReductionTargets((uint)ReductionTargets.SG_REDUCTIONTARGET_ALL);//Selects which targets should be considered when reducing
+            reductionSettings.SetTriangleRatio(0.5f); //Stops at 50% of the original triangle count
             reductionSettings.SetMaxDeviation(SimplygonSDK.REAL_MAX); //Stops when an error of the specified size has been reached. As set here it never happens.
+            reductionSettings.SetOnScreenSize(50); //Stops when an error of the specified size has been reached. As set here it never happens.
             //This condition corresponds to the on-screen size target presented in the Simplygon GUI, with a simple formula to convert between the two.
 
             // The repair settings object contains settings for the pre-processing block
@@ -100,8 +91,7 @@ namespace ReductionExample
 
             // Do the actual exporting
             objExporter.SetExportFilePath(writeTo + ".obj");
-            objExporter.SetSingleGeometry(lodGeom); //This is the geometry we set as the processing geom of the reducer
-            objExporter.SetMaterials(originalMaterials); //Same material set as input
+            objExporter.SetScene(lodScene); //This is the geometry we set as the processing geom of the reducer
             if (!objExporter.RunExport())
             {
                 Console.WriteLine("Failed to write target file");
@@ -116,23 +106,19 @@ namespace ReductionExample
             // Load input geometry from file
             spWavefrontImporter objReader = sdk.CreateWavefrontImporter();
             objReader.SetExtractGroups(false); //This makes the .obj reader import into a single geometry object instead of multiple
-            objReader.SetImportFilePath(readFrom);
-            if (!objReader.RunImport())
-            {
-                Console.WriteLine("Failed to read: " + readFrom);
+           	objReader.SetImportFilePath(readFrom);
+            if (!objReader.RunImport()) {
                 return;
             }
+            spScene originalScene = objReader.GetScene(); //Only contains a single geom, so "first" is fine
+            spMaterialTable originalMaterialTable = originalScene.GetMaterialTable();
 
-            // Get geometry and materials from importer
-            spGeometryData originalGeom = objReader.GetFirstGeometry(); //Only contains a single geom, so "first" is fine
-            spMaterialTable originalMaterialTable = objReader.GetMaterials();
-
-            // Create a copy of the original geometry on which we will run the reduction
-            spGeometryData lodGeometry = originalGeom.NewCopy(true);
+            //Create a copy of the original geometry on which we will run the reduction
+            spScene lodScene = originalScene.NewCopy();
 
             // Create the reduction-processor, and set the geometry to reduce
             spReductionProcessor reductionProcessor = sdk.CreateReductionProcessor();
-            reductionProcessor.SetGeometry(lodGeometry);
+            reductionProcessor.SetScene(lodScene);
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,20 +129,22 @@ namespace ReductionExample
             reductionSettings.SetReductionHeuristics((uint)ReductionHeuristics.SG_REDUCTIONHEURISTICS_FAST); //Choose between "fast" and "consistent" processing.
 
             // The actual reduction triangle target are controlled by these three settings
-            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_EITHER_IS_REACHED); //The reduction stops when either of the targets is reached
-            reductionSettings.SetReductionRatio(0.5f); //Stops at 50% of the original triangle count
+            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_ANY); //The reduction stops when either of the targets is reached
+            reductionSettings.SetReductionTargets((uint)ReductionTargets.SG_REDUCTIONTARGET_ALL); //The reduction stops when either of the targets is reached
+            reductionSettings.SetTriangleRatio(0.5f); //Stops at 50% of the original triangle count
             reductionSettings.SetMaxDeviation(SimplygonSDK.REAL_MAX); //Stops when an error of the specified size has been reached. As set here it never happens.
+            reductionSettings.SetOnScreenSize(50); //Targets when the LOD is optimized for the selected on screen pixel size
 
             // The normal calculation settings deal with the normal-specific reduction settings
             spNormalCalculationSettings normalSettings = reductionProcessor.GetNormalCalculationSettings();
             normalSettings.SetReplaceNormals(true); //If true, this will turn off normal handling in the reducer and recalculate them all afterwards instead.
-            normalSettings.SetHardEdgeAngle(70.0f); //If the normals are recalculated, this sets the hard-edge angle.
+            normalSettings.SetHardEdgeAngleInRadians(3.14f); //If the normals are recalculated, this sets the hard-edge angle.
 
             // The Image Mapping Settings, specifically needed for the texture baking we are doing later
             spMappingImageSettings mappingSettings = reductionProcessor.GetMappingImageSettings();
             mappingSettings.SetGenerateMappingImage(true); //Without this we cannot fetch data from the original geometry, and thus not generate diffuse and normal-maps later on.
             mappingSettings.SetGenerateTexCoords(true);//Set to generate new texture coordinates.
-            mappingSettings.SetMaxStretch(0.4f); //The higher the number, the fewer texture-borders.
+            mappingSettings.SetParameterizerMaxStretch(0.8f); //The higher the number, the fewer texture-borders.
             mappingSettings.SetGutterSpace(2); //Buffer space for when texture is mip-mapped, so color values don't blend over. Greatly influences packing efficiency
             mappingSettings.SetTexCoordLevel(0); //Sets the output texcoord level. For this asset, this will overwrite the original coords
             mappingSettings.SetWidth(1024);
@@ -246,8 +234,7 @@ namespace ReductionExample
             // Generate the output filenames
             // Do the actual exporting
             objExporter.SetExportFilePath(writeTo + ".obj");
-            objExporter.SetSingleGeometry(lodGeometry); //This is the geometry we set as the processing geom of the reducer
-            objExporter.SetMaterials(lodMaterialTable); //Our new cast material
+            objExporter.SetScene(lodScene); //This is the geometry we set as the processing geom of the reducer
             if (!objExporter.RunExport())
             {
                 Console.WriteLine("Failed to write target file");
@@ -266,15 +253,15 @@ namespace ReductionExample
                 return;
 
             // Get geometry and materials from importer
-            spGeometryData originalGeometry = objReader.GetFirstGeometry(); //Only contains a single geom, so "first" is fine
-            spMaterialTable originalMaterialTable = objReader.GetMaterials();
+            spScene originalScene = objReader.GetScene(); //Only contains a single geom, so "first" is fine
+            spMaterialTable originalMaterialTable = originalScene.GetMaterialTable();
 
             //Create a copy of the original geometry on which we will run the reduction
-            spGeometryData lodGeometry = originalGeometry.NewCopy(true);
+            spScene lodScene = originalScene.NewCopy();
 
             // Create the reduction-processor, and set the geometry to reduce
             spReductionProcessor reductionProcessor = sdk.CreateReductionProcessor();
-            reductionProcessor.SetGeometry(lodGeometry);
+            reductionProcessor.SetScene(lodScene);
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -286,12 +273,10 @@ namespace ReductionExample
 
             // The normal calculation settings deal with the normal-specific reduction settings
             spNormalCalculationSettings normalSettings = reductionProcessor.GetNormalCalculationSettings();
-            normalSettings.SetReplaceNormals(true); //If true, this will turn off normal handling in the reducer and recalculate them all afterwards instead.
-            normalSettings.SetHardEdgeAngle(70.0f); //If the normals are recalculated, this sets the hard-edge angle.
 
             // The actual reduction triangle target are controlled by these three settings
-            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_EITHER_IS_REACHED); //The reduction stops when either of the targets is reached
-            reductionSettings.SetReductionRatio(0.0f); //Never stop at a triangle percentage, will hit MaxDeviation instead.
+            reductionSettings.SetStopCondition((uint)StopCondition.SG_STOPCONDITION_ANY); //The reduction stops when either of the targets is reached
+            reductionSettings.SetReductionTargets((uint)ReductionTargets.SG_REDUCTIONTARGET_ONSCREENSIZE); //The reduction stops when either of the targets is reached
 
 
             //END SETTINGS 
@@ -299,22 +284,13 @@ namespace ReductionExample
 
             //Create an .obj exporter to save our result
             spWavefrontExporter objExporter = sdk.CreateWavefrontExporter();
-            objExporter.SetSingleGeometry(lodGeometry); //This is the geometry we set as the processing geom of the reducer
-            objExporter.SetMaterials(originalMaterialTable); //Same materials as original
+            objExporter.SetScene(lodScene); //This is the geometry we set as the processing geom of the reducer
 
             //Set reduction targets using on-screen size to set the maximum deviation
-            originalGeometry.CalculateExtents(true); //This calculates the bounds of the geometry
-            float[] geometryInf = new float[3];
-            float[] geometrySup = new float[3];
-            originalGeometry.GetInf(geometryInf);
-            originalGeometry.GetSup(geometrySup);
-            float geometryDiagonalLength = (float)Math.Sqrt((double)((geometrySup[0] - geometryInf[0]) * (geometrySup[0] - geometryInf[0]) +
-                (geometrySup[1] - geometryInf[1]) * (geometrySup[1] - geometryInf[1]) +
-                (geometrySup[2] - geometryInf[2]) * (geometrySup[2] - geometryInf[2])));
-            float[] maxDeviationTargets = new float[3]; //To find an approximate MaxDeviation for a pixelsize on screen, we just divide the diagonal by our wanted pixelsize
-            maxDeviationTargets[0] = geometryDiagonalLength / 500.0f; //Gives a deviation of max 1 pixel at ~500 pixels on-screen
-            maxDeviationTargets[1] = geometryDiagonalLength / 100.0f; //Gives a deviation of max 1 pixel at ~100 pixels on-screen
-            maxDeviationTargets[2] = geometryDiagonalLength / 50.0f; //Gives a deviation of max 1 pixel at ~50 pixels on-screen
+            uint[] onScreenSizeTargets = new uint[3]; //To find an approximate MaxDeviation for a pixelsize on screen, we just divide the diagonal by our wanted pixelsize
+            onScreenSizeTargets[0] = 500; //Gives a deviation of max 1 pixel at ~500 pixels on-screen
+            onScreenSizeTargets[1] = 100; //Gives a deviation of max 1 pixel at ~100 pixels on-screen
+            onScreenSizeTargets[2] = 50; //Gives a deviation of max 1 pixel at ~50 pixels on-screen
 
             //Generate the output filenames
             string[] outputGeomFilename = new string[3];
@@ -326,7 +302,7 @@ namespace ReductionExample
             for (int reductionIteration = 0; reductionIteration < 3; ++reductionIteration)
             {
                 // The geometry still uses the same pointer, so it does not need to be re-set for the exporter or reducer after each pass.
-                reductionSettings.SetMaxDeviation(maxDeviationTargets[reductionIteration]); //Stops when an error of the specified size has been reached. 
+                reductionSettings.SetOnScreenSize(onScreenSizeTargets[reductionIteration]); //Stops when an error of the specified size has been reached. 
                 reductionProcessor.RunProcessing();
 
                 // Do the exporting
