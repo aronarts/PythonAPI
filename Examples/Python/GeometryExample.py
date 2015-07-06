@@ -107,10 +107,17 @@ def RunExample1():
     # Setup the Exporter for storing the reduced mesh to file
     objexp = Utils.GetSDK().CreateWavefrontExporter();
 
+    # Create scene
+    scene = Utils.GetSDK().CreateScene();
+    root = scene.GetRootNode()
+    meshNode = Utils.GetSDK().CreateSceneMesh()
+    meshNode.SetGeometry( geom )
+    root.AddChild(meshNode);
+
 
     outputPath = Utils.GetOutputPath(exampleName, "Quad.obj")
     objexp.SetExportFilePath( outputPath );
-    objexp.SetSingleGeometry( geom );
+    objexp.SetScene( scene );
     objexp.RunExport();
 
 def RunExample2():
@@ -184,9 +191,16 @@ def RunExample2():
     # Setup the Exporter for storing the reduced mesh to file
     objexp = Utils.GetSDK().CreateWavefrontExporter()
 
+    # Create scene
+    scene = Utils.GetSDK().CreateScene();
+    root = scene.GetRootNode()
+    meshNode = Utils.GetSDK().CreateSceneMesh()
+    meshNode.SetGeometry( geom )
+    root.AddChild(meshNode);
+
     outputPath = Utils.GetOutputPath(exampleName, "Quad2.obj");
     objexp.SetExportFilePath( outputPath );
-    objexp.SetSingleGeometry( geom );
+    objexp.SetScene( scene );
     objexp.RunExport();
 
 
@@ -270,9 +284,16 @@ def RunExample3():
     # Setup the Exporter for storing the reduced mesh to file
     objexp = Utils.GetSDK().CreateWavefrontExporter()
 
+    # Create scene
+    scene = Utils.GetSDK().CreateScene();
+    root = scene.GetRootNode()
+    meshNode = Utils.GetSDK().CreateSceneMesh()
+    meshNode.SetGeometry( geom.NewUnpackedCopy() )
+    root.AddChild(meshNode);
+
     outputPath = Utils.GetOutputPath(exampleName, "Quad3.obj");
     objexp.SetExportFilePath( outputPath );
-    objexp.SetSingleGeometry( geom.NewUnpackedCopy() );
+    objexp.SetScene( scene );
     objexp.RunExport();
 
 main()
