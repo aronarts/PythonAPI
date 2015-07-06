@@ -78,46 +78,38 @@ def RunHighQualityReduction(readFrom, writeTo):
         return;
 
     # Get geometry and materials from importer
-    originalGeom = objReader.GetFirstGeometry(); #Only contains a single geom, so "first" is fine
-    originalMaterials = objReader.GetMaterials();
+    originalScene = objReader.GetScene(); 
+    originalMaterialTable = originalScene.GetMaterialTable();
 
-    #Create a copy of the original geometry on which we will run the reduction
-    lodGeom = originalGeom.NewCopy(True);
+    # Create a copy of the original scene on which we will run the reduction
+    lodScene = originalScene.NewCopy();
 
     # Create the reduction-processor, and set the geometry to reduce
     reductionProcessor = sdk.CreateReductionProcessor();
-    reductionProcessor.SetGeometry( lodGeom );
+    reductionProcessor.SetScene( lodScene );
 
     ###############################################/
     # SETTINGS - Most of these are set to the same value by default, but are set anyway for clarity
 
     # The reduction settings object contains settings pertaining to the actual decimation
     reductionSettings = reductionProcessor.GetReductionSettings();
-    reductionSettings.SetEnablePreprocessing(True); #This enables the pre-processing block, which contains welding and t-junction removal
-    reductionSettings.SetEnablePostprocessing(True); #This enables the post-processing block, which contains normal recalculation and mapping image generation
     reductionSettings.SetKeepSymmetry(True); #Try, when possible to reduce symmetrically
     reductionSettings.SetUseAutomaticSymmetryDetection(True); #Auto-detect the symmetry plane, if one exists. Can, if required, be set manually instead.
     reductionSettings.SetUseHighQualityNormalCalculation(True); #Drastically increases the quality of the LODs normals, at the cost of extra processing time.
     reductionSettings.SetReductionHeuristics(SDK.SG_REDUCTIONHEURISTICS_CONSISTENT); #Choose between "fast" and "consistent" processing. Fast will look as good, but may cause inconsistent 
                                                                                                                                                               #triangle counts when comparing MaxDeviation targets to the corresponding percentage targets.
 
-    # The reducer uses a feature flags mask to tell it what kind of borders to respect during reduction.
-    featureFlagsMask = 0;
-    featureFlagsMask |= SDK.SG_FEATUREFLAGS_GROUP; #Respect borders between group ids
-    featureFlagsMask |= SDK.SG_FEATUREFLAGS_MATERIAL; #Respect borders between material ids
-    featureFlagsMask |= SDK.SG_FEATUREFLAGS_TEXTURE0; #Respect discontinuities in the first texcoord field
-    featureFlagsMask |= SDK.SG_FEATUREFLAGS_SHADING; #Respect hard shading borders
-    reductionSettings.SetFeatureFlags( featureFlagsMask );
-
     # The reducer uses importance weights for all features to decide where and how to reduce.
     # These are advanced settings and should only be changed if you have some specific reduction requirement
     # reductionSettings->SetShadingImportance(2.f); #This would make the shading twice as important to the reducer as the other features.
 
     # The actual reduction triangle target are controlled by these three settings
-    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_EITHER_IS_REACHED); #The reduction stops when either of the targets is reached
-    reductionSettings.SetReductionRatio(0.5); #Stops at 50% of the original triangle count
+    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_ANY); #The reduction stops when either of the targets is reached
+    reductionSettings.SetReductionTargets(SDK.SG_REDUCTIONTARGET_ALL); #Selects which targets should be considered when reducing
+    reductionSettings.SetTriangleRatio(0.5); #Stops at 50% of the original triangle count
     reductionSettings.SetMaxDeviation(SDK.REAL_MAX); #Stops when an error of the specified size has been reached. As set here it never happens.
     #This condition corresponds to the on-screen size target presented in the Simplygon GUI, with a simple formula to convert between the two.
+    reductionSettings.SetOnScreenSize(50); #Targets when the LOD is optimized for the selected on screen pixel size
 
     # The repair settings object contains settings for the pre-processing block
     repairSettings = reductionProcessor.GetRepairSettings();
@@ -145,8 +137,7 @@ def RunHighQualityReduction(readFrom, writeTo):
 
     # Do the actual exporting
     objExporter.SetExportFilePath( writeTo + ".obj");
-    objExporter.SetSingleGeometry( lodGeom ); #This is the geometry we set as the processing geom of the reducer
-    objExporter.SetMaterials( originalMaterials ); #Same material set as input
+    objExporter.SetScene( lodScene ); 
     objExporter.RunExport();
 
     #Done! LOD created.
@@ -162,15 +153,15 @@ def RunReductionWithTextureCasting(readFrom, writeTo):
         return;
 
     # Get geometry and materials from importer
-    originalGeom = objReader.GetFirstGeometry(); #Only contains a single geom, so "first" is fine
-    originalMaterialTable = objReader.GetMaterials();
+    originalScene = objReader.GetScene(); 
+    originalMaterialTable = originalScene.GetMaterialTable();
 
-    # Create a copy of the original geometry on which we will run the reduction
-    lodGeometry = originalGeom.NewCopy(True);
+    # Create a copy of the original scene on which we will run the reduction
+    lodScene = originalScene.NewCopy();
 
     # Create the reduction-processor, and set the geometry to reduce
     reductionProcessor = sdk.CreateReductionProcessor();
-    reductionProcessor.SetGeometry( lodGeometry);
+    reductionProcessor.SetScene( lodScene );
 
 
     ###############################################/
@@ -181,20 +172,23 @@ def RunReductionWithTextureCasting(readFrom, writeTo):
     reductionSettings.SetReductionHeuristics(SDK.SG_REDUCTIONHEURISTICS_FAST); #Choose between "fast" and "consistent" processing.
 
     # The actual reduction triangle target are controlled by these three settings
-    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_EITHER_IS_REACHED); #The reduction stops when either of the targets is reached
-    reductionSettings.SetReductionRatio(0.5); #Stops at 50% of the original triangle count
+    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_ANY); #The reduction stops when either of the targets is reached
+    reductionSettings.SetReductionTargets(SDK.SG_REDUCTIONTARGET_ALL);#Selects which targets should be considered when reducing
+    reductionSettings.SetTriangleRatio(0.5); #Stops at 50% of the original triangle count
+    reductionSettings.SetTriangleCount(10); #Targets when only 10 triangle remains
     reductionSettings.SetMaxDeviation(SDK.REAL_MAX); #Stops when an error of the specified size has been reached. As set here it never happens.
+    reductionSettings.SetOnScreenSize(50); #Targets when the LOD is optimized for the selected on screen pixel size
 
     # The normal calculation settings deal with the normal-specific reduction settings
     normalSettings = reductionProcessor.GetNormalCalculationSettings();
     normalSettings.SetReplaceNormals(True); #If true, this will turn off normal handling in the reducer and recalculate them all afterwards instead.
-    normalSettings.SetHardEdgeAngle( 70 ); #If the normals are recalculated, this sets the hard-edge angle.
+    normalSettings.SetHardEdgeAngleInRadians( 3.14 ); #If the normals are recalculated, this sets the hard-edge angle.
 
     # The Image Mapping Settings, specifically needed for the texture baking we are doing later
     mappingSettings = reductionProcessor.GetMappingImageSettings();
     mappingSettings.SetGenerateMappingImage( True ); #Without this we cannot fetch data from the original geometry, and thus not generate diffuse and normal-maps later on.
     mappingSettings.SetGenerateTexCoords( True );#Set to generate new texture coordinates.
-    mappingSettings.SetMaxStretch( 0.2 ); #The higher the number, the fewer texture-borders.
+    mappingSettings.SetParameterizerMaxStretch( 0.8 ); #The higher the number, the fewer texture-borders.
     mappingSettings.SetGutterSpace( 1 ); #Buffer space for when texture is mip-mapped, so color values don't blend over. Greatly influences packing efficiency
     mappingSettings.SetTexCoordLevel(0); #Sets the output texcoord level. For this asset, this will overwrite the original coords
     mappingSettings.SetWidth( 1024 );
@@ -217,7 +211,9 @@ def RunReductionWithTextureCasting(readFrom, writeTo):
 
     # Now, for each channel, we want to cast the 9 input materials into a single output material, with one texture per channel. 
     # First, create a new material table.
-    lodMaterialTable = sdk.CreateMaterialTable();
+    lodMaterialTable = lodScene.GetMaterialTable();
+    lodMaterialTable.Clear()
+
     # Create new material for the table.
     lodMaterial = sdk.CreateMaterial();
     lodMaterial.SetName( "SimplygonBakedMaterial" );
@@ -281,18 +277,12 @@ def RunReductionWithTextureCasting(readFrom, writeTo):
     ###############################################/
 
 
-    # Set all material IDs to 0, since we now only use 1 material for the entire geometry.
-    materialIdsArray = lodGeometry.GetMaterialIds();
-    for i in range(0, lodGeometry.GetTriangleCount()):
-        materialIdsArray.SetItem( i, 0 );
-
     #Create an .obj exporter to save our result
     objExporter = sdk.CreateWavefrontExporter();
 
     # Generate the output filenames
     objExporter.SetExportFilePath( writeTo + ".obj");
-    objExporter.SetSingleGeometry( lodGeometry ); #This is the geometry we set as the processing geom of the reducer
-    objExporter.SetMaterials( lodMaterialTable ); #Our new cast material
+    objExporter.SetScene( lodScene ); #This is the geometry we set as the processing geom of the reducer
     objExporter.RunExport();
 
     #Done! LOD and material created.
@@ -308,15 +298,14 @@ def RunCascadedLodChainReduction(readFrom, writeToLod1, writeToLod2, writeToLod3
         return;
 
     # Get geometry and materials from importer
-    originalGeometry = objReader.GetFirstGeometry(); #Only contains a single geom, so "first" is fine
-    originalMaterialTable = objReader.GetMaterials();
+    originalScene = objReader.GetScene(); 
 
-    #Create a copy of the original geometry on which we will run the reduction
-    lodGeometry = originalGeometry.NewCopy(True);
+    # Create a copy of the original scene on which we will run the reduction
+    lodScene = originalScene.NewCopy();
 
     # Create the reduction-processor, and set the geometry to reduce
     reductionProcessor = sdk.CreateReductionProcessor();
-    reductionProcessor.SetGeometry( lodGeometry );
+    reductionProcessor.SetScene( lodScene );
 
 
     ###############################################/
@@ -328,12 +317,12 @@ def RunCascadedLodChainReduction(readFrom, writeToLod1, writeToLod2, writeToLod3
 
     # The normal calculation settings deal with the normal-specific reduction settings
     normalSettings = reductionProcessor.GetNormalCalculationSettings();
-    normalSettings.SetReplaceNormals(True); #If true, this will turn off normal handling in the reducer and recalculate them all afterwards instead.
-    normalSettings.SetHardEdgeAngle( 70 ); #If the normals are recalculated, this sets the hard-edge angle.
+    normalSettings.SetReplaceNormals(False); #If true, this will turn off normal handling in the reducer and recalculate them all afterwards instead.
+    #normalSettings.SetHardEdgeAngleInRadians( 3.14159f*70.0f/180.0f ); #If the normals are recalculated, this sets the hard-edge angle.
 
     # The actual reduction triangle target are controlled by these three settings
-    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_EITHER_IS_REACHED); #The reduction stops when either of the targets is reached
-    reductionSettings.SetReductionRatio(0.0); #Never stop at a triangle percentage, will hit MaxDeviation instead.
+    reductionSettings.SetStopCondition(SDK.SG_STOPCONDITION_ANY); #The reduction stops when either of the targets is reached
+    reductionSettings.SetReductionTargets(SDK.SG_REDUCTIONTARGET_ONSCREENSIZE); #The reduction stops when either of the targets is reached
 
 
     #END SETTINGS 
@@ -341,21 +330,13 @@ def RunCascadedLodChainReduction(readFrom, writeToLod1, writeToLod2, writeToLod3
 
     #Create an .obj exporter to save our result
     objExporter = sdk.CreateWavefrontExporter();
-    objExporter.SetSingleGeometry( lodGeometry ); #This is the geometry we set as the processing geom of the reducer
-    objExporter.SetMaterials(originalMaterialTable); #Same materials as original
+    objExporter.SetScene( lodScene ); #This is the geometry we set as the processing geom of the reducer
 
-    #Set reduction targets using on-screen size to set the maximum deviation
-    originalGeometry.CalculateExtents(True); #This calculates the bounds of the geometry
-    geometryInf = originalGeometry.GetInf();
-    geometrySup = originalGeometry.GetSup();
-    geometryDiagonalLength = math.sqrt((geometrySup[0] - geometryInf[0]) * (geometrySup[0] - geometryInf[0]) + 
-                                                                            (geometrySup[1] - geometryInf[1]) * (geometrySup[1] - geometryInf[1]) + 
-                                                                            (geometrySup[2] - geometryInf[2]) * (geometrySup[2] - geometryInf[2]));
     #To find an approximate MaxDeviation for a pixelsize on screen, we just divide the diagonal by our wanted pixelsize
-    maxDeviationTargets = [
-        geometryDiagonalLength / 500, #Gives a deviation of max 1 pixel at ~500 pixels on-screen
-        geometryDiagonalLength / 100, #Gives a deviation of max 1 pixel at ~100 pixels on-screen
-        geometryDiagonalLength / 50] #Gives a deviation of max 1 pixel at ~50 pixels on-screen
+    onScreenSizeTargets = [
+        500, #Gives a deviation of max 1 pixel at ~500 pixels on-screen
+        100, #Gives a deviation of max 1 pixel at ~100 pixels on-screen
+        50] #Gives a deviation of max 1 pixel at ~50 pixels on-screen
     
     #Generate the output filenames
     outputGeomFilename = [writeToLod1, writeToLod2, writeToLod3]
@@ -363,12 +344,12 @@ def RunCascadedLodChainReduction(readFrom, writeToLod1, writeToLod2, writeToLod3
     # Run the iterative processing, saving the output geometry after every process
     for reductionIteration in range(0,3):
         # The geometry still uses the same pointer, so it does not need to be re-set for the exporter or reducer after each pass.
-        reductionSettings.SetMaxDeviation(maxDeviationTargets[reductionIteration]); #Stops when an error of the specified size has been reached. 
+        reductionSettings.SetOnScreenSize(onScreenSizeTargets[reductionIteration]); #Stops when an error of the specified size has been reached. 
         reductionProcessor.RunProcessing();
 
         # Do the exporting
         objExporter.SetMaterialFilePath(None); #Reset the material file path so it's set by ExportFilePath
-        objExporter.SetExportFilePath( outputGeomFilename[reductionIteration] );
+        objExporter.SetExportFilePath( outputGeomFilename[reductionIteration] + ".obj");
         objExporter.RunExport();
 
     #Done! 3 cascaded LODs created.
