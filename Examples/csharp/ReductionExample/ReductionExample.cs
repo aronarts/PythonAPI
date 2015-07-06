@@ -16,7 +16,8 @@ namespace ReductionExample
             {
                 return;
             }
-            string assetRoot = @"../../../../../../Assets/";
+            string userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string assetRoot = userProfileDirectory + @"/Documents/SimplygonSDK/SourceCode/Assets/";
             string tempRoot = @"../../../../../temp/";
             Console.WriteLine("Running HQ Reduction");
             RunHighQualityReduction(sdk, assetRoot + "SimplygonMan.obj", tempRoot + "SimplygonMan_HQ_LOD");
