@@ -641,6 +641,74 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spAggregationProcessor)
   EndAllowedTypes()
 }
+%typemap(in) SimplygonSDK::IAggregationSettings * {
+  BeginAllowedTypes()
+  AllowedType(spAggregationSettings)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IAmbientOcclusionCaster * {
+  BeginAllowedTypes()
+  AllowedType(spAmbientOcclusionCaster)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IMaterialReplacer* {
+  BeginAllowedTypes()
+  AllowedType(spMaterialReplacer)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IObject* {
+  BeginAllowedTypes()
+  AllowedType(spObject)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IOcclusionMeshProcessorr* {
+  BeginAllowedTypes()
+  AllowedType(spOcclusionMeshProcessor)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IOcclusionMeshSettings* {
+  BeginAllowedTypes()
+  AllowedType(spOcclusionMeshSettings)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IPartRemover* {
+  BeginAllowedTypes()
+  AllowedType(spPartRemover)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IScenePlane* {
+  BeginAllowedTypes()
+  AllowedType(spScenePlane)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::ISelectionSet* {
+  BeginAllowedTypes()
+  AllowedType(spSelectionSet)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::ISelectionSetTable* {
+  BeginAllowedTypes()
+  AllowedType(spSelectionSetTable)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IShaderGenerator* {
+  BeginAllowedTypes()
+  AllowedType(spShaderGenerator)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::ITangentCalculator* {
+  BeginAllowedTypes()
+  AllowedType(spTangentCalculator)
+  EndAllowedTypes()
+}
+%typemap(in) SimplygonSDK::IWelder* {
+  BeginAllowedTypes()
+  AllowedType(spWelder)
+  EndAllowedTypes()
+}
+
+
+
 #endif // defined(SWIGPYTHON)
 
 #if defined(SWIGCSHARP)

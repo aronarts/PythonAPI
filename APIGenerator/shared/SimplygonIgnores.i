@@ -139,8 +139,7 @@
 %ignore IBoneSettings;
 %ignore IBoolArray;
 %ignore IBoolData;
-%ignore ICamera;
-%ignore ICameraPath;
+%ignore ISceneCamera;
 %ignore ICharArray;
 %ignore ICharData;
 %ignore IChartAggregator;
@@ -249,6 +248,22 @@
 %ignore IImageDataExporter;
 %ignore IGeometryAnalyzer;
 %ignore IUVAnalyzer;
+%ignore IAggregationProcessor;
+%ignore IAggregationSettings;
+%ignore IAmbientOcclusionCaster;
+%ignore IMaterialReplacer;
+%ignore IObject;
+%ignore IOcclusionMeshProcessor;
+%ignore IOcclusionMeshSettings;
+%ignore IPartRemover;
+%ignore ISceneCamera;
+%ignore IScenePlane;
+%ignore ISelectionSet;
+%ignore ISelectionSetTable;
+%ignore IShaderGenerator;
+%ignore ITangentCalculator;
+%ignore IWelder;
+
 #endif // defined(SWIGPYTHON)
 
 // Additional cast operators that needs to be ignored
