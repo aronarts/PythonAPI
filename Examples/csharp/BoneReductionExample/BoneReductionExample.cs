@@ -21,7 +21,6 @@ namespace BoneReductionExample
 
             // Run the example code
             RunExampleGenerateAndBendHelix(sdk);
-            RunExampleRemoveBonesFromSimplygonScene(sdk);
 
             // deinit SDK
             //DeinitExample();
@@ -308,49 +307,6 @@ namespace BoneReductionExample
             scene.GetRootNode().AddChild(root_bone);
             return scene;
         }
-        static void RunExampleRemoveBonesFromSimplygonScene(ISimplygonSDK sdk)
-        {
-            string userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            string assetRoot = userProfileDirectory + @"/Documents/SimplygonSDK/SourceCode/Assets/RiggedSimplygonMan/";
-            string tempRoot = @"../../../../../temp/";
-            spScene scene = sdk.CreateScene();
-            if (!scene.LoadFromFile(assetRoot + "RiggedSimplygonMan.sgscene"))
-            {
-                Console.WriteLine("Failed to load scene");
-                return;
-            }
-            
-            Console.WriteLine("Reducing bones in RiggedSimplygonMan...\n");
-            scene.CalculateExtents();
-
-            //Run reduction processor with zero max_deviation - meaning that the
-            //mesh won't be reduced.
-
-            Console.WriteLine("By 20%%\n");
-            RunReductionProcessing(sdk, scene, 0.0f, 0.8f);
-            if (!scene.SaveToFile(tempRoot + "RiggedSimplygonMan_BoneLOD_80.sgscene"))
-            {
-                Console.WriteLine("Failed to save scene");
-                return;
-            }
-
-            Console.WriteLine("By 50%%\n");
-            RunReductionProcessing(sdk, scene, 0.0f, 0.5f);
-            if (!scene.SaveToFile(tempRoot + "RiggedSimplygonMan_BoneLOD_50.sgscene"))
-            {
-                Console.WriteLine("Failed to save scene");
-                return;
-            }
-
-            Console.WriteLine("By 80%%\n");
-            RunReductionProcessing(sdk, scene, 0.0f, 0.2f);
-            if (!scene.SaveToFile(tempRoot + "RiggedSimplygonMan_BoneLOD_20.sgscene"))
-            {
-                Console.WriteLine("Failed to save scene");
-                return;
-            }
-        }
-
 
         // This function stores the data into an .obj file
         static bool save_geometry_to_file(ISimplygonSDK sdk, spScene scene, string filepath)
@@ -358,9 +314,8 @@ namespace BoneReductionExample
             // create the wavefront exporter
             spWavefrontExporter exp = sdk.CreateWavefrontExporter();
 
-            spGeometryData geom = Utils.SimplygonCast<spSceneMesh>(scene.GetRootNode().GetChild(0), false).GetGeometry();
             // set the geometry
-            exp.SetSingleGeometry(geom);
+            exp.SetScene(scene);
 
 
             // set file path
@@ -474,7 +429,7 @@ namespace BoneReductionExample
         {
             // Create the reduction processor. Set the scene that is to be processed
             spReductionProcessor red = sdk.CreateReductionProcessor();
-            red.SetSceneRoot(scene.GetRootNode());
+            red.SetScene(scene);
 
             ///////////////////////////////////////////////////
             //	Set the bone settings
@@ -483,10 +438,11 @@ namespace BoneReductionExample
             // Reduce bones based on percentage of bones in the scene.
             // Bone lod process tells the reduction processor the method
             // to use for bone reduction.
-            boneSettings.SetBoneLodProcess((uint)BoneRemovalProcessing.SG_BONEPROCESSING_RATIO_PROCESSING);
+            boneSettings.SetBoneReductionTargets((uint)BoneReductionTargets.SG_BONEREDUCTIONTARGET_BONERATIO | (uint)BoneReductionTargets.SG_BONEREDUCTIONTARGET_ONSCREENSIZE);
 
             // Set the ratio of bones to keep in the scene
-            boneSettings.SetBoneLodRatio(keep_bone_ratio);
+            boneSettings.SetBoneRatio(.5f);
+            boneSettings.SetOnScreenSize(500);
 
             ///////////////////////////////////////////////////
             //
@@ -507,12 +463,6 @@ namespace BoneReductionExample
 
             // These flags will make the reduction process respect group and material setups, 
             // as well as preserve UV coordinates.
-            FeatureFlags BorderFlagsMask = 0;
-            BorderFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_GROUP;
-            BorderFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_MATERIAL;
-            BorderFlagsMask |= FeatureFlags.SG_FEATUREFLAGS_TEXTURE0;
-
-            reduction_settings.SetFeatureFlags((uint)BorderFlagsMask);
 
             // Reduce until we reach max deviation.
             reduction_settings.SetMaxDeviation(max_dev);
@@ -524,7 +474,7 @@ namespace BoneReductionExample
 
             // Will completely recalculate the normals.
             normal_settings.SetReplaceNormals(true);
-            normal_settings.SetHardEdgeAngle(90.0f);
+            normal_settings.SetHardEdgeAngleInRadians(3.14159f * 90.0f / 180.0f);
 
             // Run the process
             red.RunProcessing();

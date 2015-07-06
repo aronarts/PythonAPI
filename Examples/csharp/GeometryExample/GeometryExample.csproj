@@ -85,6 +85,10 @@
       <Project>{5d0e4d73-8aee-4004-9c85-e2422e61fa99}</Project>
       <Name>SimplygonSDKCLR</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Example\Example.csproj">
+      <Project>{023c990f-59e1-4746-9a0b-774c5d02c6b1}</Project>
+      <Name>Example</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

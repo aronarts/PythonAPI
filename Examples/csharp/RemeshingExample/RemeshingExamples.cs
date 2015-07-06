@@ -37,8 +37,7 @@ namespace RemeshingExample
 
         static bool run_remeshing_for_lod(ISimplygonSDK sdk, int lod_index, uint merge_distance)
         {
-            string userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            string assetRoot = userProfileDirectory + @"/Documents/SimplygonSDK/SourceCode/Assets/";
+            string assetRoot = @"../../../../../../Assets/";
             string tempRoot = @"../../../../../temp/";
             string output_filename = string.Format(tempRoot + "wall_lod{0}_merge{1}.obj", lod_index + 1, merge_distance);
             string output_material_filename = string.Format(tempRoot + "wall_lod{0}_merge{1}.mtl", lod_index + 1, merge_distance); 
@@ -47,8 +46,8 @@ namespace RemeshingExample
 
 
             // Import source geometry
-            spGeometryData geom;
             spMaterialTable materials;
+            spScene scene = sdk.CreateScene();
             Console.WriteLine("Importing wavefront .obj file...\n");
             {
                 // Run import
@@ -63,21 +62,9 @@ namespace RemeshingExample
                 }
 
                 // Get the only geometry and the materials
-                geom = importer.GetFirstGeometry();
-                materials = importer.GetMaterials();
+                scene = importer.GetScene();
+                materials = scene.GetMaterialTable();
             }
-
-            // Make a copy of the geometry, we need the original for texture casting later.
-            // The remesher will replace the data of the geometry after it has processed it.
-            spGeometryData red_geom = geom.NewCopy(true);
-
-            // Create a Scene-object and a SceneMesh-object. 
-            // Place the red_geom into the SceneMesh, and then the SceneMesh as a child to the RootNode.
-            spScene scene = sdk.CreateScene();
-            spSceneMesh mesh = sdk.CreateSceneMesh();
-            mesh.SetGeometry(red_geom);
-            mesh.SetName(red_geom.GetName().GetText());
-            scene.GetRootNode().AddChild(mesh);
 
             spMappingImage mapping_image;
 
@@ -92,11 +79,11 @@ namespace RemeshingExample
                 //  and geometries closer to each other than this will be merged.
                 remesher.GetRemeshingSettings().SetMergeDistance(merge_distance);
                 //  Disable the cutting plane
-                remesher.GetRemeshingSettings().SetUseGroundPlane(false);
+                remesher.GetRemeshingSettings().SetCuttingPlaneSelectionSetID(-1);
                 //	Set to generate mapping image for texture casting.
                 remesher.GetMappingImageSettings().SetGenerateMappingImage(true);
 
-                remesher.SetSceneRoot(scene.GetRootNode());
+                remesher.SetScene(scene);
                 remesher.RemeshGeometry();
 
                 // Mapping image is needed later on for texture casting.
@@ -156,8 +143,7 @@ namespace RemeshingExample
             {
                 spWavefrontExporter exporter = sdk.CreateWavefrontExporter();
                 exporter.SetExportFilePath(output_filename);
-                exporter.SetSingleGeometry(topmesh.GetGeometry());
-                exporter.SetMaterials(output_materials);
+                exporter.SetScene(scene);
                 if (!exporter.RunExport())
                 {
                     Console.WriteLine("Failed to write result");
