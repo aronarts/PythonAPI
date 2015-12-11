@@ -1,4 +1,5 @@
-%module SimplygonSDK
+%module (directors="1") SimplygonSDK
+%feature("director") robserver;
 
 %{
 #include "..\shared\Logger.h"
@@ -107,3 +108,4 @@ namespace SimplygonSDK {
 %include "SimplygonTemplates.i"
 
 %include "SimplygonLoader.i"
+

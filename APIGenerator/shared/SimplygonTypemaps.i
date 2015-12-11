@@ -426,6 +426,7 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
 	AllowedType(spSceneMesh)
 	AllowedType(spSceneLodGroup)
 	AllowedType(spSceneBone)
+	AllowedType(spSceneCamera)
 	EndAllowedTypes()
 }
 %typemap(in) SimplygonSDK::ISceneNodeCollection * {
@@ -659,6 +660,7 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
 %typemap(in) SimplygonSDK::IObject* {
   BeginAllowedTypes()
   AllowedType(spObject)
+  AllowedType(spSelectionSet)
   EndAllowedTypes()
 }
 %typemap(in) SimplygonSDK::IOcclusionMeshProcessorr* {
@@ -706,7 +708,6 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spWelder)
   EndAllowedTypes()
 }
-
 
 
 #endif // defined(SWIGPYTHON)
