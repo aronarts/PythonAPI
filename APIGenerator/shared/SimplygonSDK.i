@@ -1,5 +1,6 @@
 %module (directors="1") SimplygonSDK
 %feature("director") robserver;
+%feature("director") rerrorhandler;
 
 %{
 #include "..\shared\Logger.h"

@@ -698,6 +698,11 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   AllowedType(spShaderGenerator)
   EndAllowedTypes()
 }
+%typemap(in) SimplygonSDK::IShadowMeshProcessor* {
+  BeginAllowedTypes()
+  AllowedType(spShadowMeshProcessor)
+  EndAllowedTypes()
+}
 %typemap(in) SimplygonSDK::ITangentCalculator* {
   BeginAllowedTypes()
   AllowedType(spTangentCalculator)

@@ -78,6 +78,7 @@
     <Compile Include="swig\AtlasFillMode.cs" />
     <Compile Include="swig\BaseTypes.cs" />
     <Compile Include="swig\BoneReductionTargets.cs" />
+    <Compile Include="swig\CameraType.cs" />
     <Compile Include="swig\ChartAggregatorMode.cs" />
     <Compile Include="swig\DataCreationPreferences.cs" />
     <Compile Include="swig\DitherPatterns.cs" />
@@ -186,6 +187,8 @@
     <Compile Include="swig\IShadingSwizzlingNode.cs" />
     <Compile Include="swig\IShadingTextureNode.cs" />
     <Compile Include="swig\IShadingVertexColorNode.cs" />
+    <Compile Include="swig\IShadowMeshProcessor.cs" />
+    <Compile Include="swig\IShadowMeshSettings.cs" />
     <Compile Include="swig\IShortArray.cs" />
     <Compile Include="swig\IShortData.cs" />
     <Compile Include="swig\ISimplygonSDK.cs" />
@@ -212,6 +215,7 @@
     <Compile Include="swig\IWavefrontExporter.cs" />
     <Compile Include="swig\IWavefrontImporter.cs" />
     <Compile Include="swig\IWelder.cs" />
+    <Compile Include="swig\OcclusionModes.cs" />
     <Compile Include="swig\ReductionHeuristics.cs" />
     <Compile Include="swig\ReductionTargets.cs" />
     <Compile Include="swig\RemeshingSurfaceTransferMode.cs" />
@@ -318,6 +322,7 @@
     <Compile Include="swig\spShadingSwizzlingNode.cs" />
     <Compile Include="swig\spShadingTextureNode.cs" />
     <Compile Include="swig\spShadingVertexColorNode.cs" />
+    <Compile Include="swig\spShadowMeshProcessor.cs" />
     <Compile Include="swig\spShortArray.cs" />
     <Compile Include="swig\spShortData.cs" />
     <Compile Include="swig\spString.cs" />
@@ -351,6 +356,7 @@
     <Compile Include="swig\SWIGTYPE_p_long.cs" />
     <Compile Include="swig\SWIGTYPE_p_p_void.cs" />
     <Compile Include="swig\SWIGTYPE_p_short.cs" />
+    <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__CountedPointerT_SimplygonSDK__IShadowMeshSettings_t.cs" />
     <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IBoolData_t.cs" />
     <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__ICharData_t.cs" />
     <Compile Include="swig\SWIGTYPE_p_SimplygonSDK__rdataT_SimplygonSDK__IDoubleData_t.cs" />

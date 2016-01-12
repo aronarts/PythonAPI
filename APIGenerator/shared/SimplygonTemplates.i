@@ -122,4 +122,5 @@
 %template(spShaderGenerator) SimplygonSDK::CountedPointer<IShaderGenerator>;
 %template(spTangentCalculator) SimplygonSDK::CountedPointer<ITangentCalculator>;
 %template(spWelder) SimplygonSDK::CountedPointer<IWelder>;
+%template(spShadowMeshProcessor) SimplygonSDK::CountedPointer<IShadowMeshProcessor>;
 
