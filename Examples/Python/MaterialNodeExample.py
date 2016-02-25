@@ -305,16 +305,17 @@ def RunExample( readFrom ):
     if( not objReader.RunImport() ):
         raise RuntimeError("Failed to import: "+readFrom)
 
-    # Store geometries in collection
-    collection = objReader.GetGeometries();
-
     # Set up scene
-    scene = sdk.CreateScene();
+    scene = objReader.GetScene()
+
+    selectionSetAllSceneMeshesID = scene.SelectNodes("ISceneMesh")
+    selectionSetAllSceneMeshes = scene.GetSelectionSetTable().GetSelectionSet(selectionSetAllSceneMeshesID);
 
     # For all objects in the collection
-    h = collection.GetFirstItem();
-    while h != None:
-        newGeom = collection.GetGeometryData(h);
+    for i in range(0, selectionSetAllSceneMeshes.GetItemCount()):
+        item = selectionSetAllSceneMeshes.GetItem( i )
+        newSceneMesh = scene.GetNodeByGUID( item.GetText() )
+        newGeom = newSceneMesh.GetGeometry()
 
         # Compute a few sets of vertex colors based on the height of the model
         # the colors will be used to blend between textures

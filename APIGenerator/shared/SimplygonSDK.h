@@ -27231,7 +27231,7 @@ namespace SimplygonSDK
 	 */
 	inline const rchar *GetHeaderVersion()
 		{
-		return "7.1.1666";
+		return "7.1.1720";
 		}
 
 };

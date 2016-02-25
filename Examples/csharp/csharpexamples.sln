@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryExample", "GeometryExample\GeometryExample.csproj", "{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}"
 EndProject
@@ -29,8 +29,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|x64.ActiveCfg = Debug|x64
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|x64.Build.0 = Debug|x64
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Debug|x86.ActiveCfg = Debug|x86
@@ -45,8 +45,8 @@ Global
 		{F09DBCB9-A5ED-4F17-AD07-1EEF75A1EBA1}.Release|x86.Build.0 = Release|x86
 		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|x64.ActiveCfg = Debug|x64
 		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|x64.Build.0 = Debug|x64
 		{5D0E4D73-8AEE-4004-9C85-E2422E61FA99}.Debug|x86.ActiveCfg = Debug|x86
@@ -77,8 +77,8 @@ Global
 		{4B0CF144-D5A5-4D47-A91E-F4CF4366B5B1}.Release|x86.Build.0 = Release|x86
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|x64.ActiveCfg = Debug|x64
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|x64.Build.0 = Debug|x64
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Debug|x86.ActiveCfg = Debug|x86
@@ -93,8 +93,8 @@ Global
 		{023C990F-59E1-4746-9A0B-774C5D02C6B1}.Release|x86.Build.0 = Release|x86
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|x64.ActiveCfg = Debug|x64
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|x64.Build.0 = Debug|x64
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Debug|x86.ActiveCfg = Debug|x86
@@ -109,8 +109,8 @@ Global
 		{22D299EC-383B-4856-AAB5-4A745B64C288}.Release|x86.Build.0 = Release|x86
 		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x64.ActiveCfg = Debug|x64
 		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x64.Build.0 = Debug|x64
 		{EDB9A6D7-67AE-417A-B708-2EEC922C0849}.Debug|x86.ActiveCfg = Debug|x86
