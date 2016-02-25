@@ -7,7 +7,7 @@ This project generates a API that makes the Simplygon API accessible through pyt
 ## Requirements
 - Swig (http://www.swig.org/)
 - Python (https://www.python.org/downloads/), tested on 3.4 and 2.7
-- Simplygon 6.2. This project is yet to be tried on Simplygon 7. The examples and potentially some of the SWIG files will have to be updated for it to work
+- Simplygon 7.1.1720 
 
 ## Initial notes
 - These bindings are work in progress.
