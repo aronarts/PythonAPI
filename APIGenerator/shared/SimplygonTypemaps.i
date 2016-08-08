@@ -661,6 +661,7 @@ if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor,0) == -1) {
   BeginAllowedTypes()
   AllowedType(spObject)
   AllowedType(spSelectionSet)
+  AllowedType(spMaterial)
   EndAllowedTypes()
 }
 %typemap(in) SimplygonSDK::IOcclusionMeshProcessorr* {
